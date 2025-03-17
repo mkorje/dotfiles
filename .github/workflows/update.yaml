@@ -34,7 +34,6 @@ jobs:
           pr-labels: |
             automated
             dependencies
-          pr-assignees: mkorje
           sign-commits: true
           gpg-private-key: ${{ secrets.MKORJE_BOT_GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.MKORJE_BOT_GPG_PASSPHRASE }}
