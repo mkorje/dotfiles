@@ -1,0 +1,40 @@
+name: Update flake.lock file
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1,4"
+jobs:
+  update-flake-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            flake.nix
+            flake.lock
+          sparse-checkout-cone-mode: false
+      - uses: nixbuild/nix-quick-install-action@v30
+        with:
+          nix_on_tmpfs: true
+          nix_conf: |
+            substituters = https://cache.soopy.moe https://cache.thalheim.io https://catppuccin.cachix.org https://helix.cachix.org https://mkorje.cachix.org https://nix-community.cachix.org https://cache.nixos.org/
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.soopy.moe-1:0RZVsQeR+GOh0VQI9rvnHz55nVXkFardDqfm4+afjPo= cache.thalheim.io-1:R7msbosLEZKrxk/lKxf9BTjOOH7Ax3H0Qj0/6wiHOgc= catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU= helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs= mkorje.cachix.org-1:iM64JN6YIX1myYc5JhqjVxgSjNl/zYDHYR+u++ublwM= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+      - uses: DeterminateSystems/update-flake-lock@v24
+        with:
+          token: ${{ secrets.MKORJE_BOT_GH_TOKEN }}
+          commit-msg: "build(flake): update flake.lock"
+          branch: update-flake-lock
+          pr-title: "build(flake): update flake.lock"
+          pr-body: |
+            Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.
+
+            ```
+            {{ env.GIT_COMMIT_MESSAGE }}
+            ```
+          pr-labels: |
+            automated
+            dependencies
+          pr-assignees: mkorje
+          sign-commits: true
+          gpg-private-key: ${{ secrets.MKORJE_BOT_GPG_PRIVATE_KEY }}
+          gpg-passphrase: ${{ secrets.MKORJE_BOT_GPG_PASSPHRASE }}
