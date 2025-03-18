@@ -197,16 +197,16 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1742175606,
-        "narHash": "sha256-ySDbWexjMKX0rR23WOykqXMqHLnmnNZybeaCWnM7h3Y=",
-        "owner": "mkorje",
+        "lastModified": 1742217307,
+        "narHash": "sha256-3fwpN7KN226ghLlpO9TR0/WpgQOmOj1e8bieUxpIYSk=",
+        "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "12e431559680054e785c884cba596293f319bce0",
+        "rev": "4f4d97d7b7be387286cc9c988760a7ebaa5be1f1",
         "type": "github"
       },
       "original": {
-        "owner": "mkorje",
-        "ref": "apple-t2",
+        "owner": "NixOS",
+        "ref": "master",
         "repo": "nixos-hardware",
         "type": "github"
       }
