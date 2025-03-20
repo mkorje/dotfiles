@@ -48,5 +48,9 @@
     pandoc
 
     anki
+
+    # not yet in nixos-unstable
+    # filen-cli
+    filen-desktop
   ];
 }
