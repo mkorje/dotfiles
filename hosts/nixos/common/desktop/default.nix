@@ -50,6 +50,7 @@
   };
 
   programs.fish.enable = true;
+  documentation.man.generateCaches = false;
 
   users = {
     mutableUsers = false;
