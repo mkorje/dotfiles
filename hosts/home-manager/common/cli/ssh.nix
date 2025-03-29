@@ -1,8 +1,12 @@
+{ pkgs, ... }:
+
 let
   gitIdentityFile = "~/.ssh/id_ed25519_sk_rk_git-auth";
 
 in
 {
+  home.packages = [ (pkgs.callPackage ./pkgs/uni-connect.nix { }) ];
+
   programs.ssh = {
     enable = true;
     addKeysToAgent = "no";
@@ -29,6 +33,13 @@ in
       "gitlab.com" = {
         user = "git";
         identityFile = gitIdentityFile;
+      };
+
+      "comp30023" = {
+        user = "mkortge";
+        hostname = "172.26.130.140";
+        proxyCommand = "uni-connect %h %p";
+        extraOptions.controlPersist = "no";
       };
 
       "*" = {
