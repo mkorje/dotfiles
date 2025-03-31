@@ -3,7 +3,7 @@
 {
   imports = [
     ../common
-    inputs.self.homeManagerModules.monitors
+    inputs.self.homeModules.monitors
   ];
 
   desktop.monitors = [
