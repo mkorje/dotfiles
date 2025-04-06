@@ -6,12 +6,10 @@
     xplr.enable = true;
     yazi = {
       enable = true;
-      enableFishIntegration = true;
     };
     joshuto.enable = true;
     broot = {
       enable = true;
-      enableFishIntegration = true;
     };
   };
 
@@ -30,7 +28,6 @@
     # cd replacements
     zoxide = {
       enable = true;
-      enableFishIntegration = true;
     };
 
     # cat replacements
@@ -62,7 +59,6 @@
     # command-line fuzzy finder
     fzf = {
       enable = true;
-      enableFishIntegration = true;
     };
 
     # process/system monitor

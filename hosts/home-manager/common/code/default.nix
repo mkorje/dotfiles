@@ -19,12 +19,7 @@
 
   programs.direnv = {
     enable = true;
-    enableBashIntegration = false;
-    #enableFishIntegration = true;
-    enableNushellIntegration = false;
-    enableZshIntegration = false;
-    #config = { };
     nix-direnv.enable = true;
-    #stdlib = "";
+    silent = true;
   };
 }

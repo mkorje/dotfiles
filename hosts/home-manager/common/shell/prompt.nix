@@ -3,7 +3,6 @@
 {
   programs.starship = {
     enable = true;
-    enableFishIntegration = true;
     enableTransience = true;
     settings = {
       command_timeout = 1000;
