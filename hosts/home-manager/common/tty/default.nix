@@ -5,10 +5,6 @@
     enable = true;
     package = pkgs.alacritty;
     settings = {
-      window.padding = {
-        x = 25;
-        y = 25;
-      };
       mouse.hide_when_typing = true;
       font = {
         normal = {

@@ -21,10 +21,19 @@
     interactiveShellInit = ''
       set -g fish_greeting
     '';
-    loginShellInit = "";
-    plugins = [ ];
-    shellAbbrs = { };
-    shellAliases = { };
-    shellInit = "";
+  };
+
+  programs.zellij = {
+    enable = true;
+    enableFishIntegration = true;
+    exitShellOnExit = true;
+    settings = {
+      on_force_close = "quit";
+      pane_frames = false;
+      default_layout = "compact";
+      ui.pane_frames.hide_session_name = true;
+      show_startup_tips = false;
+      show_release_notes = false;
+    };
   };
 }
