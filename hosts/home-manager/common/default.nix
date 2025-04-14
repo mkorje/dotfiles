@@ -40,7 +40,7 @@
     pcmanfm
     #electrum-ltc
     qbittorrent
-    signal-desktop
+    signal-desktop-bin
     bitwarden
     bitwarden-cli
     rclone
