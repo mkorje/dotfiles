@@ -16,6 +16,7 @@
       init.defaultBranch = "main";
       gpg.format = "ssh";
       push.autoSetupRemote = true;
+      log.date = "iso";
     };
 
     # delta = {
