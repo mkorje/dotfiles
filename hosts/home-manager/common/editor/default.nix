@@ -21,6 +21,7 @@
       clang-tools
       cmake-language-server
       fish-lsp
+      harper
       lldb
       marksman
       nil
@@ -31,14 +32,24 @@
       taplo
       texlab
       tinymist
+      vale
+      vale-ls
       yaml-language-server
 
       # python
       # ltex-ls
       # typos-lsp
+      # typst-languagetool
     ];
     languages = {
       language-server = {
+        harper-ls = {
+          command = "harper-ls";
+          args = [ "--stdio" ];
+          config.harper-ls = {
+            dialect = "Australian";
+          };
+        };
         # tinymist.config = {
         #   projectResolution = "lockDatabase";
         #   outputPath = "$root/../target/$dir/$name";

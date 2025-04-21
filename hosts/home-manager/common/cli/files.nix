@@ -15,9 +15,16 @@
     imagemagick
     exiftool
     libavif
+    oxipng
+    jpegoptim
+    libwebp
+    nodePackages_latest.svgo
+    mozjpeg
+    scour
 
     # Videos
     ffmpeg
+    gifsicle
 
     # PDF
     ghostscript
