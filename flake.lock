@@ -367,7 +367,7 @@
     "starship-nerd-font-symbols": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-+AgvZZl7PAunphSe/LY392zHRPsMxKRVBo8TyDHZRRs=",
+        "narHash": "sha256-YrSuM/Gp2uC5anFFQoO66hCJ1tp4XYK5M12u9np5aeg=",
         "type": "file",
         "url": "https://starship.rs/presets/toml/nerd-font-symbols.toml"
       },
