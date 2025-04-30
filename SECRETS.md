@@ -4,7 +4,7 @@
 
 yubikey serials
 
-- primary:   18630670 (yka)
+- primary: 18630670 (yka)
 - secondary: 18630960 (ykb)
 
 | ID | Created | Public Key |

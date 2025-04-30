@@ -27,9 +27,9 @@ sudo sync
 
 Secure Boot must be disabled on the computer before proceeding.
 
-1. Power on the system and press \[Delete\] key to enter BIOS \[Advanced Mode\] as below picture
-1. Click \[Boot\]
-1. Click \[Secure Boot\] option
+1. Power on the system and press [Delete] key to enter BIOS [Advanced Mode] as below picture
+1. Click [Boot]
+1. Click [Secure Boot] option
 1. If OS Type Default is: Other OS, then Secure Boot state is off; Windows UEFI mode, then Secure Boot state is on.
 
 Plug the USB flash drive into the computer and turn it on. You should be booted into the installer. If not, you may need to configure the boot order in the BIOS.
@@ -76,16 +76,16 @@ reboot
 
 Press `F2` or `DEL` to enter BIOS. Set a password for the BIOS.
 
-1. Click \[Main\]
-1. Click \[Security\] option
+1. Click [Main]
+1. Click [Security] option
 1. Click Administrator Password
    Then change to UEFI firmware Setup Mode.
-1. Click \[Boot\]
-1. Click \[Secure Boot\] option
+1. Click [Boot]
+1. Click [Secure Boot] option
 1. Set OS Default Type to Windows UEFI mode
-1. Click \[Key Management\] option
+1. Click [Key Management] option
 1. Click Clear Secure Boot Keys
-   Then click \[Exit\] and save changes and reset.
+   Then click [Exit] and save changes and reset.
 
 Now let the system boot and enter the encryption password. At the login screen, press `F2` and change the command to bash. Then login.
 
