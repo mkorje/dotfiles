@@ -1,6 +1,7 @@
 {
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
     settings = {
       mainBar = {
         layer = "top";
@@ -135,6 +136,5 @@
       	letter-spacing: -1px;
       }
     '';
-    systemd.enable = true;
   };
 }

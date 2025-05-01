@@ -12,6 +12,7 @@
   home.packages = with pkgs; [
     grim
     slurp
+    # xdg-utils
   ];
 
   catppuccin = {
@@ -20,10 +21,14 @@
     flavor = "mocha";
   };
 
+  # Notification daemon
+  services.mako.enable = true;
+
+  # Clipboard manager
+  # TODO: https://github.com/Linus789/wl-clip-persist
+  services.cliphist.enable = true;
+
   xdg.configFile."uwsm/env".text = ''
     export NIXOS_OZONE_WL=1
-    export GBM_BACKEND=nvidia-drm
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export LIBVA_DRIVER_NAME=nvidia
   '';
 }

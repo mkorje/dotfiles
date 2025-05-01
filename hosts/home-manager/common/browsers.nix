@@ -10,6 +10,7 @@
       "accessibility.force_disabled" = 1;
       "identity.fxaccounts.enabled" = true;
       "security.ssl.require_safe_negotiation" = false;
+      # "media.ffmpeg.vaapi.enabled" = true;
     };
   };
 

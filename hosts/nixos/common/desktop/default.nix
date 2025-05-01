@@ -5,13 +5,15 @@
 }:
 
 {
-  imports = [ ./network.nix ];
+  imports = [
+    ./network.nix
+    ./wayland.nix
+  ];
 
   environment.persistence."/persist" = {
     directories = [
       "/var/lib/bluetooth"
       "/etc/mullvad-vpn"
-      "/var/cache/tuigreet"
     ];
   };
 
@@ -20,13 +22,14 @@
     "steam-original"
     "steam-run"
     "steam-unwrapped"
+    "discord"
   ];
 
   environment.systemPackages = with pkgs; [
     dolphin-emu
-    pavucontrol
     openrazer-daemon
     polychromatic
+    discord
   ];
 
   programs.steam = {
@@ -71,17 +74,6 @@
     groups."mkorje" = { };
   };
 
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-  };
-
-  # look at theming: https://github.com/apognu/tuigreet?tab=readme-ov-file#theming
-  services.greetd = {
-    enable = true;
-    settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --time --remember --remember-session";
-  };
-
   #needed for amberol (in home-manager config) daemon to work correctly
   programs.dconf.enable = true;
 
@@ -112,16 +104,6 @@
 
   hardware.openrazer.enable = true;
 
-  # systemd.services.greetd.serviceConfig = {
-  #   StandardInput = "tty";
-  #   StandardOutput = "tty";
-  #   StandardError = "journal";  # without this errors will spam on screen
-  #   # Without these bootlogs will spam on screen
-  #   TTYReset = true;
-  #   TTYVHangup = true;
-  #   TTYVTDisallocate = true;
-  # };
-
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
 
@@ -129,15 +111,4 @@
   # upower.enable = true;
   # xserver.libinput.enable = true;
   # };
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  };
-
 }

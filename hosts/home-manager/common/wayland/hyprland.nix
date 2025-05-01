@@ -1,15 +1,14 @@
+{ pkgs, ... }:
+
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = false;
     package = null;
     portalPackage = null;
+    systemd.enable = false;
     settings = {
       "$mod" = "SUPER";
       exec-once = [
-        #"mako"
-        #"wl-paste --type text --watch cliphist store"  #Stores only text data
-        #"wl-paste --type image --watch cliphist store" #Stores only image data
       ];
       bind =
         [
@@ -20,6 +19,7 @@
           "$mod, RETURN, exec, uwsm-app -T"
           "$mod, SPACE, exec, uwsm-app -- $(tofi-drun)"
           "$mod, F, fullscreen"
+          "$mod, V, exec, cliphist list | tofi | cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy"
 
           # move focus with $mod + arrow keys and vim keybinds
           "$mod, H, movefocus, l"
