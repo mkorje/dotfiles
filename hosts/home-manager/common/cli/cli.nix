@@ -17,7 +17,6 @@
     # ls replacements
     lsd = {
       enable = false;
-      enableAliases = true;
     };
     eza = {
       enable = true;
