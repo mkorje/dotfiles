@@ -37,7 +37,7 @@ in
 
       "comp30023" = {
         user = "mkortge";
-        hostname = "172.26.130.140";
+        hostname = "172.26.133.239";
         proxyCommand = "uni-connect %h %p";
         extraOptions.controlPersist = "no";
       };
