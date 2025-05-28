@@ -15,7 +15,6 @@
 
     # fonts
     newcomputermodern
-    fontforge-gtk
   ];
 
   programs.zathura = {

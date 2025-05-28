@@ -34,6 +34,13 @@
     # Cleaners
     czkawka
     identity
+
+    # Fonts
+    (fontforge.override {
+      withSpiro = true;
+      withGUI = true;
+    })
+    harfbuzz.dev
   ];
 
   programs = {
