@@ -41,6 +41,7 @@
       withGUI = true;
     })
     harfbuzz.dev
+    python313Packages.fonttools
   ];
 
   programs = {
