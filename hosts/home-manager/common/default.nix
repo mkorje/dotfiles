@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -54,5 +58,11 @@
     filen-desktop
 
     cinny-desktop
+
+    # unfree
+    discord
+    (zoom-us.override (_prev: {
+      hyprlandXdgDesktopPortalSupport = true;
+    }))
   ];
 }

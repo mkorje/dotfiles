@@ -23,13 +23,13 @@
     "steam-run"
     "steam-unwrapped"
     "discord"
+    "zoom"
   ];
 
   environment.systemPackages = with pkgs; [
     dolphin-emu
     openrazer-daemon
     polychromatic
-    discord
   ];
 
   programs.steam = {
