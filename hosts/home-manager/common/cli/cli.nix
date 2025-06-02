@@ -73,11 +73,7 @@
       };
     };
 
-    # lol
-    thefuck = {
-      enable = true;
-      # enableInstantMode = false;
-    };
+    pay-respects.enable = true;
   };
 
   home.packages = with pkgs; [
