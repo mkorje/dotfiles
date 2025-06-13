@@ -55,8 +55,14 @@
         #276 is far side
       ];
       animation = [ "windows, 1, 3, default, popin 80%" ];
+      windowrule = [
+        "float, class:^(librewolf)$, title:^(Picture-in-Picture)$"
+        "pin, class:^(librewolf)$, title:^(Picture-in-Picture)$"
+        "size 800 450, class:^(librewolf)$, title:^(Picture-in-Picture)$"
+      ];
       misc = {
         disable_hyprland_logo = true;
+        vfr = true;
       };
       ecosystem = {
         no_update_news = true;
