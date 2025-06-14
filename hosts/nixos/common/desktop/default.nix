@@ -24,6 +24,7 @@
     "steam-unwrapped"
     "discord"
     "zoom"
+    "epsonscan2"
   ];
 
   environment.systemPackages = with pkgs; [
@@ -78,6 +79,8 @@
           "wheel"
           "audio"
           "openrazer"
+          "scanner"
+          "lp"
         ];
         hashedPasswordFile = config.sops.secrets."users/mkorje/hashedPassword".path;
       };
@@ -85,10 +88,25 @@
     groups."mkorje" = { };
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+
   # printing
   services.printing = {
     enable = true;
     drivers = [ pkgs.epson-escpr2 ];
+  };
+
+  hardware.sane = {
+    enable = true;
+    extraBackends = [
+      (pkgs.epsonscan2.override {
+        withNonFreePlugins = true;
+        withGui = false;
+      })
+    ];
   };
 
   hardware.printers = {
