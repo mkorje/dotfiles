@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  # imports = [ "${modulesPath}/profiles/perlless.nix" ];
-
   # environment.systemPackages = with pkgs; [ cachix ];
 
   nix = {

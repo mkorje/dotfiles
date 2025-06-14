@@ -1,10 +1,65 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 
+let
+  inherit (config.programs) hyprland;
+  inherit (pkgs) niri;
+in
 {
+  environment.systemPackages = [
+    hyprland.package
+    niri
+  ];
+
+  programs = {
+    dconf.enable = true;
+    xwayland.enable = true;
+    uwsm = {
+      enable = true;
+      waylandCompositors = {
+        hyprland = {
+          prettyName = "Hyprland";
+          comment = "Hyprland compositor managed by UWSM";
+          binPath = "/run/current-system/sw/bin/Hyprland";
+        };
+        niri = {
+          prettyName = "Niri";
+          comment = "Niri compositor managed by UWSM";
+          binPath = lib.getExe (
+            pkgs.writeShellScriptBin "niriSession" ''
+              /run/current-system/sw/bin/niri --session
+            ''
+          );
+        };
+      };
+    };
+  };
+
+  xdg.portal = {
+    enable = true;
+    # wlr.enable = true;
+    extraPortals = with pkgs; [
+      hyprland.portalPackage
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
+    configPackages = [
+      hyprland.package
+      niri
+    ];
+  };
+
+  security.polkit.enable = true;
+
+  services = {
+    graphical-desktop.enable = true;
+    xserver.desktopManager.runXdgAutostartIfNone = true;
+  };
+
   environment.persistence."/persist" = {
     directories = [ "/var/cache/tuigreet" ];
   };
@@ -12,28 +67,5 @@
   services.greetd = {
     enable = true;
     settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --time --remember --remember-session";
-  };
-
-  # Compositor
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-  };
-
-  # Authentication agent
-  # TODO: install agent
-  security.polkit.enable = true;
-
-  # Pipewire
-  environment.systemPackages = with pkgs; [
-    pwvucontrol
-    sonusmix
-  ];
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    jack.enable = true;
   };
 }

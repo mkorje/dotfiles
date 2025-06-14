@@ -5,6 +5,7 @@ let
     {
       hostName,
       system ? "x86_64-linux",
+      domain ? "mkor.je",
     }:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
@@ -18,13 +19,13 @@ let
         # };
       };
       modules = [
-        inputs.impermanence.nixosModules.impermanence
-        inputs.sops-nix.nixosModules.sops
         inputs.catppuccin.nixosModules.catppuccin
         ./nixos/${hostName}
         {
-          networking.hostName = hostName;
-          sops.defaultSopsFile = ./nixos/${hostName}/secrets.yaml;
+          networking = {
+            inherit hostName;
+            inherit domain;
+          };
           nixpkgs.hostPlatform = system;
         }
       ];

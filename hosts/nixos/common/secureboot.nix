@@ -18,7 +18,6 @@
     pkiBundle = "/persist/secureboot";
   };
 
-  # For debugging and troubleshooting Secure Boot.
   environment.systemPackages = [
     pkgs.tpm2-tools
     (pkgs.sbctl.override { databasePath = config.boot.lanzaboote.pkiBundle; })

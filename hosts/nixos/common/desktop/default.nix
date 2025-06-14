@@ -30,7 +30,18 @@
     dolphin-emu
     openrazer-daemon
     polychromatic
+    pwvucontrol
+    sonusmix
   ];
+
+  # Pipewire
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
 
   programs.steam = {
     enable = true;
@@ -73,9 +84,6 @@
     };
     groups."mkorje" = { };
   };
-
-  #needed for amberol (in home-manager config) daemon to work correctly
-  programs.dconf.enable = true;
 
   # printing
   services.printing = {

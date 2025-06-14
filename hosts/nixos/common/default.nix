@@ -3,31 +3,51 @@
 {
   imports = [
     ./default/btrfs.nix
+    ./default/impermanence.nix
     ./default/nix.nix
     ./default/nixpkgs-issue-55674.nix
+    ./default/sops.nix
   ];
 
+  services.userborn.enable = true;
+
+  boot = {
+    initrd.systemd.enable = true;
+    enableContainers = false;
+    loader.grub.enable = false;
+  };
+
+  system = {
+    etc.overlay.enable = true;
+    tools.nixos-generate-config.enable = false;
+  };
+
+  environment = {
+    defaultPackages = [ ];
+    stub-ld.enable = false;
+  };
+
+  programs.command-not-found.enable = false;
+
+  documentation = {
+    info.enable = false;
+    nixos.enable = false;
+  };
+
   environment.systemPackages = [
-    pkgs.age
     pkgs.git
     pkgs.cifs-utils
     pkgs.killall
   ];
-  sops.age.keyFile = "/persist/sops/secrets/age/key.txt";
 
-  networking = {
-    domain = "mkor.je";
-    timeServers = [
-      "0.pool.ntp.org"
-      "1.pool.ntp.org"
-      "2.pool.ntp.org"
-      "3.pool.ntp.org"
-    ];
-  };
+  networking.timeServers = [
+    "0.pool.ntp.org"
+    "1.pool.ntp.org"
+    "2.pool.ntp.org"
+    "3.pool.ntp.org"
+  ];
 
-  services.timesyncd = {
-    enable = true;
-  };
+  services.timesyncd.enable = true;
 
   security.sudo.enable = false;
   security.doas = {
@@ -38,25 +58,6 @@
         keepEnv = true;
         persist = true;
       }
-    ];
-  };
-
-  # console = {
-  #   font = null;
-  #   keyMap = "us";
-  #   enable = true;
-  #   colors = [ ];
-  #   packages = [ ];
-  #   earlySetup = true;
-  #   useXkbConfig = false;
-  # };
-
-  environment.persistence."/persist" = {
-    hideMounts = true;
-    directories = [
-      "/var/lib/nixos"
-      "/var/lib/systemd"
-      "/var/log/journal"
     ];
   };
 }
