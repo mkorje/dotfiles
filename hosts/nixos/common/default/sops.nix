@@ -8,9 +8,8 @@
 {
   imports = [ inputs.sops-nix.nixosModules.sops ];
 
-  sops.defaultSopsFile = ../../${hostName}/secrets.yaml;
-
   environment.systemPackages = [ pkgs.age ];
 
+  sops.defaultSopsFile = ../../${hostName}/secrets.yaml;
   sops.age.keyFile = "/persist/sops/secrets/age/key.txt";
 }
