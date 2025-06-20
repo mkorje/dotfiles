@@ -32,6 +32,7 @@
       taplo
       texlab
       tinymist
+      typstyle
       vale
       vale-ls
       yaml-language-server
@@ -75,6 +76,11 @@
               "-"
             ];
           };
+        }
+        {
+          name = "typst";
+          auto-format = true;
+          formatter.command = "typstyle";
         }
       ];
     };
