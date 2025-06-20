@@ -10,6 +10,7 @@
     ../common
 
     ../common/desktop
+    ../common/desktop/wireless.nix
 
     ../../home-manager
   ];
