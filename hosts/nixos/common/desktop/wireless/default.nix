@@ -1,9 +1,6 @@
 { config, ... }:
 
 {
-  networking.useDHCP = false;
-  systemd.network.enable = false;
-
   # wireless networking - iwd
   networking.wireless.iwd = {
     enable = true;

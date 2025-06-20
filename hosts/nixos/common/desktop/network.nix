@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  networking.useDHCP = false;
+  networking.dhcpcd.enable = false;
+
   # dns resolver - systemd-resolved
   networking.nameservers = [
     "1.1.1.1"
