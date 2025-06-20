@@ -8,7 +8,7 @@
 
   desktop.monitors = [
     {
-      name = "DP-1";
+      name = "DP-3";
       primary = true;
       width = 2560;
       height = 1440;
