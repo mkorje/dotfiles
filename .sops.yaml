@@ -11,3 +11,9 @@ creation_rules:
           - *nixos-b 
           - *auseklis 
           - *aizsaule 
+  - path_regex: nixos/common/desktop/wireless/secrets\.yaml$
+    key_groups:
+      - age:
+          - *nixos-a 
+          - *nixos-b 
+          - *aizsaule 

@@ -20,22 +20,22 @@
   };
 
   sops.secrets = {
-    "networking/wireless/home/passphrase".sopsFile = ./secrets.yaml;
-    "networking/wireless/mordy/passphrase".sopsFile = ./secrets.yaml;
+    "networking/wireless/Aether/passphrase".sopsFile = ./secrets.yaml;
+    "networking/wireless/TeamSAM/passphrase".sopsFile = ./secrets.yaml;
     "networking/wireless/eduroam/identity".sopsFile = ./secrets.yaml;
     "networking/wireless/eduroam/password".sopsFile = ./secrets.yaml;
   };
 
   # https://man.archlinux.org/man/iwd.network.5
   sops.templates = {
-    "Telstra122A4F.psk".content = ''
+    "Aether.psk".content = ''
       [Security]
-      Passphrase=${config.sops.placeholder."networking/wireless/home/passphrase"}
+      Passphrase=${config.sops.placeholder."networking/wireless/Aether/passphrase"}
     '';
 
     "TeamSAM.psk".content = ''
       [Security]
-      Passphrase=${config.sops.placeholder."networking/wireless/mordy/passphrase"}
+      Passphrase=${config.sops.placeholder."networking/wireless/TeamSAM/passphrase"}
     '';
 
     "eduroam.8021x".content = ''
@@ -49,7 +49,7 @@
   };
 
   systemd.services.iwd.preStart = ''
-    ln -sf ${config.sops.templates."Telstra122A4F.psk".path} /var/lib/iwd/Telstra122A4F.psk
+    ln -sf ${config.sops.templates."Aether.psk".path} /var/lib/iwd/Aether.psk
     ln -sf ${config.sops.templates."TeamSAM.psk".path} /var/lib/iwd/TeamSAM.psk
     ln -sf ${config.sops.templates."eduroam.8021x".path} /var/lib/iwd/eduroam.8021x
   '';
