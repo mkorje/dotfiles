@@ -8,7 +8,7 @@ set -euo pipefail
 set +e
 swapoff -a
 umount --quiet -R /mnt
-cryptsetup --batch-mode close nixos-enc
+cryptsetup --batch-mode close nixos-enc >/dev/null 2>&1
 set -e
 
 # Partition main disk.
