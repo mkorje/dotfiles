@@ -44,7 +44,7 @@ in
 
       "lietuvens" = {
         user = "admin";
-        hostname = "172.19.0.100";
+        hostname = "172.16.3.100";
         identityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
       };
 

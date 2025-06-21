@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   imports = [
     ./hardware.nix
@@ -12,7 +14,8 @@
   systemd.network.enable = true;
   systemd.network.networks."10-enp6s0" = {
     matchConfig.Name = "enp6s0";
-    networkConfig.DHCP = "yes";
+    address = [ "172.16.3.100/16" ];
+    gateway = [ "172.16.0.1" ];
     linkConfig.RequiredForOnline = "routable";
   };
 
@@ -22,6 +25,8 @@
     gateway = [ "172.19.0.1" ];
     linkConfig.RequiredForOnline = "routable";
   };
+
+  environment.systemPackages = with pkgs; [ pciutils ];
 
   system.stateVersion = "25.05";
 }
