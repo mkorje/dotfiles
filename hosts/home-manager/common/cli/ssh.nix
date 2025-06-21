@@ -42,6 +42,12 @@ in
         extraOptions.controlPersist = "no";
       };
 
+      "lietuvens" = {
+        user = "admin";
+        hostname = "172.19.0.100";
+        identityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
+      };
+
       "*" = {
         identitiesOnly = true;
       };

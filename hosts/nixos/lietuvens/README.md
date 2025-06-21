@@ -49,19 +49,10 @@ Then reboot the machine.
 reboot
 ```
 
-Press `F2` or `DEL` to enter BIOS. Set a password for the BIOS.
+Press `DEL` to enter the BIOS. Set a password for the BIOS.
 
-1. Click [Main]
-1. Click [Security] option
-1. Click Administrator Password
-   Then change to UEFI firmware Setup Mode.
-1. Click [Boot]
-1. Click [Secure Boot] option
-1. Set OS Default Type to Windows UEFI mode
-1. Click [Key Management] option
-1. Click Clear Secure Boot Keys
-   Then click [Exit] and save changes and reset.
-
+Go to [Security] and click [Reset To Setup Mode].
+Save the changes and exit.
 Now let the system boot and enter the encryption password. At the login screen, press `F2` and change the command to bash. Then login.
 
 Enroll the secure boot keys and then reboot again.

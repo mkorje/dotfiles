@@ -8,7 +8,7 @@
   sops.secrets."users/admin/hashedPassword".neededForUsers = true;
   users.groups."admin" = { };
   users.users."admin" = {
-    isSystemUser = true;
+    isNormalUser = true;
     group = "admin";
     extraGroups = [ "wheel" ];
     # $ tr -dc A-Za-z0-9 </dev/urandom | head -c 16; echo
