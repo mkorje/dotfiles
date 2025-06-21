@@ -279,6 +279,7 @@
         "nixpkgs-stable": "nixpkgs-stable_2",
         "sops-nix": "sops-nix",
         "starship-nerd-font-symbols": "starship-nerd-font-symbols",
+        "tensorflow": "tensorflow",
         "treefmt-nix": "treefmt-nix",
         "wallpapers": "wallpapers"
       }
@@ -355,6 +356,21 @@
       "original": {
         "type": "file",
         "url": "https://starship.rs/presets/toml/nerd-font-symbols.toml"
+      }
+    },
+    "tensorflow": {
+      "locked": {
+        "lastModified": 1750593321,
+        "narHash": "sha256-XaeG+d0X8ud+JzkUuPI2sbC9XV9XCeTLVK8u3XReVs4=",
+        "owner": "mkorje",
+        "repo": "tensorflow",
+        "rev": "6b2fbc3d3b7c2f97123c9256cf1fa0efc0ef0e1d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mkorje",
+        "repo": "tensorflow",
+        "type": "github"
       }
     },
     "treefmt-nix": {

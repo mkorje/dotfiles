@@ -3,10 +3,13 @@
   nix.settings = {
     auto-optimise-store = true;
     tarball-ttl = 0;
+    warn-dirty = false;
     experimental-features = [
       "nix-command"
       "flakes"
     ];
+    connect-timeout = 5;
+    fallback = true;
     substituters = [
       "https://cache.soopy.moe"
       "https://cache.thalheim.io"

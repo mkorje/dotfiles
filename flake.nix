@@ -39,6 +39,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tensorflow.url = "github:mkorje/tensorflow";
+
     wallpapers = {
       url = "github:mkorje/wallpapers";
       flake = false;
@@ -59,7 +61,27 @@
     }:
 
     let
-      pkgs = import nixpkgs { system = "x86_64-linux"; };
+      overlay = self: super: {
+        python312 = super.python312.override {
+          packageOverrides = _: pysuper: {
+            tensorflow-bin = pysuper.tensorflow-bin.overridePythonAttrs (_: {
+              pname = "tensorflow";
+              version = "2.19.0";
+              src = super.fetchurl {
+                url = "https://github.com/mkorje/tensorflow/releases/download/v2.19.0-312/tensorflow_cpu-2.19.0-cp312-cp312-linux_x86_64.whl";
+                sha256 = "12qz7lwf2knhxxn6yw3xvljahn8gz0zfl2kil9hkxm6mzp22xx40";
+              };
+            });
+          };
+        };
+        frigate = super.frigate.override {
+          inherit (self) python312;
+        };
+      };
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [ overlay ];
+      };
       treefmt = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
     in
     {

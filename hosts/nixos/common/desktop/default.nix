@@ -12,6 +12,10 @@
     ./wayland.nix
   ];
 
+  virtualisation.docker = {
+    enable = true;
+  };
+
   environment.persistence."/persist" = {
     directories = [
       "/var/lib/bluetooth"
@@ -73,6 +77,7 @@
         "openrazer"
         "scanner"
         "lp"
+        "docker"
       ];
       hashedPasswordFile = config.sops.secrets."users/mkorje/hashedPassword".path;
     };
