@@ -26,9 +26,7 @@ doas sync
 ```
 
 Secure Boot must be disabled on the computer before proceeding.
-
 Plug the USB flash drive into the computer and boot into the installer.
-
 Switch to root user.
 
 ```bash
@@ -49,25 +47,33 @@ Then reboot the machine.
 reboot
 ```
 
-Press `DEL` to enter the BIOS. Set a password for the BIOS.
-
+Press `DEL` to enter the BIOS.
+Set a password for the BIOS and reset Secure Boot to setup mode.
 Go to [Security] and click [Reset To Setup Mode].
-Save the changes and exit.
-Now let the system boot and enter the encryption password. At the login screen, press `F2` and change the command to bash. Then login.
-
-Enroll the secure boot keys and then reboot again.
+Go to the exit, and click on the UEFI OS boot option (don't save and reset/exit as it will leave setup mode then!).
+Boot the system and login (the encryption password is blank).
+Enroll the secure boot keys, and then reboot again.
 
 ```bash
-doas sbctl enroll-keys --tpm-eventlog
+doas sbctl enroll-keys
 reboot
 ```
 
-Again, let the system boot and enter the encryption password. At the login screen, press `F2` and change the command to bash. Then login.
-
+Go to the bios and enable Secure Boot.
+Save and reset.
+Again, let the system boot and login.
 Check secure boot status.
 
 ```bash
 bootctl status
+```
+
+Now we can enroll the TPM.
+Make sure to save the recovery key.
+
+```bash
+doas systemd-cryptenroll /dev/sda2 --recovery-key
+doas systemd-cryptenroll /dev/sda2 --wipe-slot=empty --tpm2-device=auto --tpm2-pcrs=7
 ```
 
 All should be done!
