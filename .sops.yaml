@@ -3,7 +3,14 @@ keys:
   - &nixos-b age1sdhk4k70cymunsgtpys0fjxlzrfw0qpl99h5g460evs43gec4paqg0lt83
   - &auseklis age16p72a8z59uxryp46y0t453vttv7xpmmfc2ny3fewxjze0zhlzvaq48m84n
   - &aizsaule age1yenprnzcw6gq4tk4tf5ays90nt6d77l9u76m7hsudh4t5vln75qsn00q5n
+  - &lietuvens age1ztyvku6thaamhm9xshk54sych9lfktx20n0uzdprf8txcg3pydkssju2gd
 creation_rules:
+  - path_regex: nixos/lietuvens/secrets\.yaml$
+    key_groups:
+      - age:
+          - *nixos-a 
+          - *nixos-b 
+          - *lietuvens 
   - path_regex: nixos/common/desktop/secrets\.yaml$
     key_groups:
       - age:

@@ -19,7 +19,6 @@ let
         # };
       };
       modules = [
-        inputs.catppuccin.nixosModules.catppuccin
         ./nixos/${hostName}
         {
           networking = {
@@ -35,4 +34,6 @@ in
 {
   auseklis = mkSystem { hostName = "auseklis"; };
   aizsaule = mkSystem { hostName = "aizsaule"; };
+
+  lietuvens = mkSystem { hostName = "lietuvens"; };
 }

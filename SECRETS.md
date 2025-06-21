@@ -124,6 +124,12 @@ And in fish:
 SOPS_AGE_KEY=(age -i ~/.age/ykX-ageSLOT-NAME.txt -d ~/.age/NAME-X_ykX-ageSLOT-NAME.enc | string split0) sops FILE
 ```
 
+When adding or removing an age recipient, use `updatekeys`:
+
+```fish
+SOPS_AGE_KEY=(age -i ~/.age/ykX-ageSLOT-NAME.txt -d ~/.age/NAME-X_ykX-ageSLOT-NAME.enc | string split0) sops updatekeys FILE
+```
+
 ## TODO
 
 - For home-manager, store ssh key "private" key file encrypted with sops + public key in repo

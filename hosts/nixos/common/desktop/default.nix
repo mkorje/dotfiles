@@ -1,11 +1,13 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }:
 
 {
   imports = [
+    inputs.catppuccin.nixosModules.catppuccin
     ./network.nix
     ./wayland.nix
   ];
@@ -50,13 +52,6 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
-  i18n.defaultLocale = "en_AU.UTF-8";
-
-  time = {
-    timeZone = "Australia/Melbourne";
-    hardwareClockInLocalTime = false;
-  };
-
   sops.secrets = {
     "users/mkorje/hashedPassword" = {
       sopsFile = ./secrets.yaml;
@@ -68,22 +63,18 @@
   documentation.man.generateCaches = false;
 
   users = {
-    mutableUsers = false;
-    users = {
-      "root".hashedPassword = "!";
-      "mkorje" = {
-        shell = pkgs.fish;
-        isNormalUser = true;
-        group = "mkorje";
-        extraGroups = [
-          "wheel"
-          "audio"
-          "openrazer"
-          "scanner"
-          "lp"
-        ];
-        hashedPasswordFile = config.sops.secrets."users/mkorje/hashedPassword".path;
-      };
+    users."mkorje" = {
+      shell = pkgs.fish;
+      isNormalUser = true;
+      group = "mkorje";
+      extraGroups = [
+        "wheel"
+        "audio"
+        "openrazer"
+        "scanner"
+        "lp"
+      ];
+      hashedPasswordFile = config.sops.secrets."users/mkorje/hashedPassword".path;
     };
     groups."mkorje" = { };
   };
