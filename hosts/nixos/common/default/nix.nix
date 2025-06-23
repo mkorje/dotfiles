@@ -10,6 +10,7 @@
     ];
     connect-timeout = 5;
     fallback = true;
+    download-buffer-size = 524288000;
     substituters = [
       "https://cache.soopy.moe"
       "https://cache.thalheim.io"
