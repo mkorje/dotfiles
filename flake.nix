@@ -39,6 +39,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    frigate.url = "github:mkorje/frigate";
+
     wallpapers = {
       url = "github:mkorje/wallpapers";
       flake = false;

@@ -72,6 +72,21 @@
         "type": "github"
       }
     },
+    "frigate": {
+      "locked": {
+        "lastModified": 1750665486,
+        "narHash": "sha256-K6rhsARi6eZdaYADGMVgJzC0PkQ1vbDcB7QLeMbpYvg=",
+        "owner": "mkorje",
+        "repo": "frigate",
+        "rev": "95c157c1640e376dd2d08fcb497475bfcce00526",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mkorje",
+        "repo": "frigate",
+        "type": "github"
+      }
+    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -270,6 +285,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "frigate": "frigate",
         "helix": "helix",
         "home-manager": "home-manager",
         "impermanence": "impermanence",

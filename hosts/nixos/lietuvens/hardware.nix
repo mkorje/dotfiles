@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   boot.initrd.availableKernelModules = [
     "ahci"
@@ -72,4 +74,10 @@
 
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
+
+  environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [ intel-media-driver ];
+  };
 }
