@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -35,8 +35,6 @@
     ];
     linkConfig.RequiredForOnline = "routable";
   };
-
-  environment.systemPackages = with pkgs; [ pciutils ];
 
   system.stateVersion = "25.05";
 }
