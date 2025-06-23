@@ -2,6 +2,10 @@
 
 ## System Information
 
+Odyssey Blue: Quad Core Celeron J4125 Windows 10 Mini PC with 128GB external SSD,Dual Gigabit Ethernet NICs (Seeed Studio, SKU: 110991564)
+
+[Coral M.2 Accelerator with Dual Edge TPU](https://coral.ai/products/m2-accelerator-dual-edgetpu)
+
 ## Installation
 
 Download the Minimal ISO image from <https://nixos.org/download/#nixos-iso> for 64-bit Intel/AMD.
