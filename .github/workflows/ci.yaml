@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: nixbuild/nix-quick-install-action@v30
+      - uses: nixbuild/nix-quick-install-action@v31
         with:
           nix_on_tmpfs: true
           nix_conf: |
@@ -31,7 +31,7 @@ jobs:
         with:
           android-sdk: true
       - uses: actions/checkout@v4
-      - uses: nixbuild/nix-quick-install-action@v30
+      - uses: nixbuild/nix-quick-install-action@v31
         with:
           nix_conf: |
             substituters = https://cache.soopy.moe https://cache.thalheim.io https://catppuccin.cachix.org https://helix.cachix.org https://mkorje.cachix.org https://nix-community.cachix.org https://cache.nixos.org/
