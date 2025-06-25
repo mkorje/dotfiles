@@ -27,12 +27,17 @@
     config.sops.templates."frigate/authentication.env".path;
 
   services.frigate.enable = true;
-  services.frigate.hostname = "frigate.mkor.je";
+  services.frigate.hostname = "localhost";
+  services.frigate.settings.telemetry.version_check = false;
 
   services.frigate.vaapiDriver = "iHD";
   services.frigate.settings.ffmpeg = {
     hwaccel_args = "preset-vaapi";
-    output_args.record = "preset-record-generic-audio-copy";
+    input_args = "preset-rtsp-restream-low-latency";
+    # This is `preset-record-generic-audio-copy` with `-copyinkf` added. May be
+    # due to https://trac.ffmpeg.org/ticket/11531, should be fixed in the next
+    # version (current version is 7.1.1).
+    output_args.record = "-f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c copy -copyinkf";
   };
 
   services.frigate.settings.ui = {
@@ -42,6 +47,8 @@
     time_style = "medium";
   };
 
+  services.frigate.settings.motion.enabled = true;
+  services.frigate.settings.detect.enabled = true;
   services.frigate.settings.detectors = {
     coral1 = {
       type = "edgetpu";
@@ -53,6 +60,8 @@
     };
   };
 
+  services.frigate.settings.birdseye.enabled = false;
+  services.frigate.settings.audio.enabled = false;
   services.frigate.settings.snapshots.enabled = true;
   services.frigate.settings.record = {
     enabled = true;
@@ -60,14 +69,8 @@
       days = 3;
       mode = "motion";
     };
-    alerts.retain = {
-      days = 10;
-      mode = "motion";
-    };
-    detections.retain = {
-      days = 10;
-      mode = "motion";
-    };
+    alerts.retain.days = 10;
+    detections.retain.days = 10;
   };
 
   services.frigate.settings.camera_groups = {
@@ -104,35 +107,52 @@
     side = [
       "rtsp://stream:{FRIGATE_SIDE_PASSWORD}@172.19.0.140/cam/realmonitor?channel=1&subtype=0"
     ];
+    front_sub = [
+      "rtsp://stream:{FRIGATE_FRONT_PASSWORD}@172.19.0.110/cam/realmonitor?channel=1&subtype=2"
+    ];
+    back_sub = [
+      "rtsp://stream:{FRIGATE_BACK_PASSWORD}@172.19.0.120/cam/realmonitor?channel=1&subtype=2"
+    ];
+    door_sub = [
+      "rtsp://stream:{FRIGATE_DOOR_PASSWORD}@172.19.0.130/cam/realmonitor?channel=1&subtype=1"
+    ];
+    side_sub = [
+      "rtsp://stream:{FRIGATE_SIDE_PASSWORD}@172.19.0.140/cam/realmonitor?channel=1&subtype=1"
+    ];
   };
 
   services.frigate.settings.cameras.front = {
     webui_url = "http://172.19.0.110";
     ffmpeg.inputs = [
       {
-        path = "rtsp://stream:{FRIGATE_FRONT_PASSWORD}@172.19.0.110/cam/realmonitor?channel=1&subtype=2";
-        roles = [ "detect" ];
+        path = "rtsp://127.0.0.1:8554/front";
+        roles = [ "record" ];
       }
       {
-        path = "rtsp://127.0.0.1:8554/front";
-        input_args = "preset-rtsp-restream-low-latency";
-        roles = [ "record" ];
+        path = "rtsp://127.0.0.1:8554/front_sub";
+        roles = [
+          "audio"
+          "detect"
+        ];
       }
     ];
     objects.filters.person.mask = "0.02,0.34,0.14,0.34,0.14,0.57,0.02,0.57";
+    motion.contour_area = 30;
   };
 
   services.frigate.settings.cameras.back = {
     webui_url = "http://172.19.0.120";
     ffmpeg.inputs = [
       {
-        path = "rtsp://stream:{FRIGATE_BACK_PASSWORD}@172.19.0.120/cam/realmonitor?channel=1&subtype=2";
-        roles = [ "detect" ];
+        path = "rtsp://127.0.0.1:8554/back";
+        roles = [ "record" ];
       }
       {
-        path = "rtsp://127.0.0.1:8554/back";
-        input_args = "preset-rtsp-restream-low-latency";
-        roles = [ "record" ];
+        path = "rtsp://127.0.0.1:8554/back_sub";
+        roles = [
+          "audio"
+          "detect"
+        ];
       }
     ];
   };
@@ -141,28 +161,33 @@
     webui_url = "http://172.19.0.130";
     ffmpeg.inputs = [
       {
-        path = "rtsp://stream:{FRIGATE_DOOR_PASSWORD}@172.19.0.130/cam/realmonitor?channel=1&subtype=1";
-        roles = [ "detect" ];
-      }
-      {
         path = "rtsp://127.0.0.1:8554/door";
-        input_args = "preset-rtsp-restream-low-latency";
         roles = [ "record" ];
       }
+      {
+        path = "rtsp://127.0.0.1:8554/door_sub";
+        roles = [
+          "audio"
+          "detect"
+        ];
+      }
     ];
+    motion.contour_area = 20;
   };
 
   services.frigate.settings.cameras.side = {
     webui_url = "http://172.19.0.140";
     ffmpeg.inputs = [
       {
-        path = "rtsp://stream:{FRIGATE_SIDE_PASSWORD}@172.19.0.140/cam/realmonitor?channel=1&subtype=1";
-        roles = [ "detect" ];
+        path = "rtsp://127.0.0.1:8554/side";
+        roles = [ "record" ];
       }
       {
-        path = "rtsp://127.0.0.1:8554/side";
-        input_args = "preset-rtsp-restream-low-latency";
-        roles = [ "record" ];
+        path = "rtsp://127.0.0.1:8554/side_sub";
+        roles = [
+          "audio"
+          "detect"
+        ];
       }
     ];
   };
@@ -173,6 +198,10 @@
     back = "rtsp://stream:\${BACK_PASSWORD}@172.19.0.120/cam/realmonitor?channel=1&subtype=0";
     door = "rtsp://stream:\${DOOR_PASSWORD}@172.19.0.130/cam/realmonitor?channel=1&subtype=0";
     side = "rtsp://stream:\${SIDE_PASSWORD}@172.19.0.140/cam/realmonitor?channel=1&subtype=0";
+    front_sub = "rtsp://stream:\${FRONT_PASSWORD}@172.19.0.110/cam/realmonitor?channel=1&subtype=2";
+    back_sub = "rtsp://stream:\${BACK_PASSWORD}@172.19.0.120/cam/realmonitor?channel=1&subtype=2";
+    door_sub = "rtsp://stream:\${DOOR_PASSWORD}@172.19.0.130/cam/realmonitor?channel=1&subtype=1";
+    side_sub = "rtsp://stream:\${SIDE_PASSWORD}@172.19.0.140/cam/realmonitor?channel=1&subtype=1";
   };
   systemd.services.go2rtc.serviceConfig.LoadCredential = [
     "FRONT_PASSWORD:${config.sops.secrets."frigate/cameras/front/password".path}"
