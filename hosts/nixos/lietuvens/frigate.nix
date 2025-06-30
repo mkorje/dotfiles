@@ -59,6 +59,10 @@
       device = "pci:1";
     };
   };
+  services.frigate.settings.objects.track = [
+    "person"
+    "car"
+  ];
 
   services.frigate.settings.birdseye.enabled = false;
   services.frigate.settings.audio.enabled = false;
