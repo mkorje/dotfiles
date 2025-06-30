@@ -129,8 +129,5 @@
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
 
-  # services = {
-  # upower.enable = true;
-  # xserver.libinput.enable = true;
-  # };
+  services.libinput.enable = true;
 }
