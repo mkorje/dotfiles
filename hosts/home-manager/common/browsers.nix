@@ -12,6 +12,7 @@
       "security.ssl.require_safe_negotiation" = false;
       # "media.ffmpeg.vaapi.enabled" = true;
     };
+    profiles.default.extensions.force = true;
   };
 
   home.packages = with pkgs; [
