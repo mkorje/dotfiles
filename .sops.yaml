@@ -8,19 +8,19 @@ creation_rules:
   - path_regex: nixos/lietuvens/secrets\.yaml$
     key_groups:
       - age:
-          - *nixos-a 
-          - *nixos-b 
-          - *lietuvens 
+          - *nixos-a
+          - *nixos-b
+          - *lietuvens
   - path_regex: nixos/common/desktop/secrets\.yaml$
     key_groups:
       - age:
-          - *nixos-a 
-          - *nixos-b 
-          - *auseklis 
-          - *aizsaule 
+          - *nixos-a
+          - *nixos-b
+          - *auseklis
+          - *aizsaule
   - path_regex: nixos/common/desktop/wireless/secrets\.yaml$
     key_groups:
       - age:
-          - *nixos-a 
-          - *nixos-b 
-          - *aizsaule 
+          - *nixos-a
+          - *nixos-b
+          - *aizsaule
