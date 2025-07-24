@@ -11,5 +11,10 @@
   ];
 
   # CAS
-  programs.sagemath.enable = true;
+  programs.sagemath = {
+    enable = true;
+    package = pkgs.sage.override {
+      requireSageTests = false;
+    };
+  };
 }
