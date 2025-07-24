@@ -6,6 +6,7 @@
     enableTransience = true;
     settings = {
       command_timeout = 1000;
-    } // lib.importTOML inputs.starship-nerd-font-symbols;
+    }
+    // lib.importTOML inputs.starship-nerd-font-symbols;
   };
 }
