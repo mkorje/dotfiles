@@ -57,7 +57,8 @@
     # filen-cli
     filen-desktop
 
-    cinny-desktop
+    # insecure
+    # cinny-desktop
 
     # unfree
     discord
