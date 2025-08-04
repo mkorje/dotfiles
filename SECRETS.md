@@ -15,19 +15,20 @@ yubikey serials
 | nixos-b_ykb-age1-nixos | | age1sdhk4k70cymunsgtpys0fjxlzrfw0qpl99h5g460evs43gec4paqg0lt83 |
 | yka-age2-files | Wed, 21 Feb 2024 05:10:04 +0000 | age1yubikey1q0vjcxgue4cvydzndvt6yxln6pw076c8syyy764uf47fqrruqs3tw05u839 |
 | ykb-age2-files | Fri, 08 Mar 2024 09:01:02 +0000 | age1yubikey1qwrunnkavx2q996cg4rax3a7k8eshr0zedxm8d3gzv8532h9dm05ckpszus |
-| yka-fido-ssh:nixos | 2024-02-21 | <sk-ssh-ed25519@openssh.com> AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIAy85V584V07OJ5VrT4sppXhOUguaUOtIvzw9GNw2J6XAAAACXNzaDpuaXhvcw== ssh:nixos |
-| ykb-fido-ssh:nixos | 2024-03-08 | <sk-ssh-ed25519@openssh.com> AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIL7Bw28cFjA5JWcwBEA/LT4ILIA0HikwTic+7agOAkhnAAAACXNzaDpuaXhvcw== ssh:nixos |
-| yka-fido-ssh:git-auth | 2024-03-04 | <sk-ssh-ed25519@openssh.com> AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPbeiRyeKkmTpBmU1jUPV7rDfzVqfsJXlnxOevKC5fz8AAAADHNzaDpnaXQtYXV0aA== ssh:git-auth |
-| ykb-fido-ssh:git-auth | 2024-03-08 | <sk-ssh-ed25519@openssh.com> AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIP1S8LK7srLzZTWMCl9aq0z7a4zOhseWpkwplrfGS79EAAAADHNzaDpnaXQtYXV0aA== ssh:git-auth |
-| yka-fido-ssh:git-sign | 2024-03-04 | <sk-ssh-ed25519@openssh.com> AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIF8WxK7cDi0iuCous6VEp58VPJv5ZpjiXSBxxtBJ/uHBAAAADHNzaDpnaXQtc2lnbg== ssh:git-sign |
-| ykb-fido-ssh:git-sign | 2024-03-08 | <sk-ssh-ed25519@openssh.com> AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKlgP5z70ru2goxTGh3xNKytLGgdyaKbMHW8MICrIGdiAAAADHNzaDpnaXQtc2lnbg== ssh:git-sign |
-| yka-fido-ssh:comp30023 | 2025-03-04 | <sk-ssh-ed25519@openssh.com> AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAINvK1J1/YAmEiYwe6DbHqfdo+EBegUwoe9xJ91s/xD6FAAAADXNzaDpjb21wMzAwMjM= ssh:comp30023 |
+| yka-fido-ssh:nixos | 2024-02-21 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIAy85V584V07OJ5VrT4sppXhOUguaUOtIvzw9GNw2J6XAAAACXNzaDpuaXhvcw== ssh:nixos` |
+| ykb-fido-ssh:nixos | 2024-03-08 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIL7Bw28cFjA5JWcwBEA/LT4ILIA0HikwTic+7agOAkhnAAAACXNzaDpuaXhvcw== ssh:nixos` |
+| yka-fido-ssh:git-auth | 2024-03-04 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPbeiRyeKkmTpBmU1jUPV7rDfzVqfsJXlnxOevKC5fz8AAAADHNzaDpnaXQtYXV0aA== ssh:git-auth` |
+| ykb-fido-ssh:git-auth | 2024-03-08 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIP1S8LK7srLzZTWMCl9aq0z7a4zOhseWpkwplrfGS79EAAAADHNzaDpnaXQtYXV0aA== ssh:git-auth` |
+| yka-fido-ssh:git-sign | 2024-03-04 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIF8WxK7cDi0iuCous6VEp58VPJv5ZpjiXSBxxtBJ/uHBAAAADHNzaDpnaXQtc2lnbg== ssh:git-sign` |
+| ykb-fido-ssh:git-sign | 2024-03-08 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKlgP5z70ru2goxTGh3xNKytLGgdyaKbMHW8MICrIGdiAAAADHNzaDpnaXQtc2lnbg== ssh:git-sign` |
+| yka-fido-ssh:comp30023 | 2025-03-04 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAINvK1J1/YAmEiYwe6DbHqfdo+EBegUwoe9xJ91s/xD6FAAAADXNzaDpjb21wMzAwMjM= ssh:comp30023` |
+| yka-fido-ssh:typst | 2025-08-04 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIK7zLWr+QDJoBzSMGxT2NO4tgkwXF+0+a55bkLRjDsAwAAAACXNzaDp0eXBzdA== ssh:typst` |
 
 ### FIDO2 Resident Keys (for ssh)
 
 | ID | Date Created | Public Key |
 |---|---|---|
-| ykX-fido-ssh:NAME | 2024-01-01 | <sk-ssh-ed25519@openssh.com> AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIMLFdO6VjZKwNs/2HIqf9q1oNOAPwBvHz/0rnUDhdYzxAAAACHNzaDpOQU1F ssh:NAME |
+| ykX-fido-ssh:NAME | 2024-01-01 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIMLFdO6VjZKwNs/2HIqf9q1oNOAPwBvHz/0rnUDhdYzxAAAACHNzaDpOQU1F ssh:NAME` |
 
 To create an ssh key that is stored on the Yubikey:
 
