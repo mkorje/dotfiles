@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 
 {
   home.packages = with pkgs; [
@@ -7,7 +7,7 @@
 
     xournalpp
     libreoffice-fresh
-    calibre
+    pkgs-stable.calibre
 
     # dictionaries
     hunspell

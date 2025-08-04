@@ -1,4 +1,9 @@
-{ inputs, hostName, ... }:
+{
+  inputs,
+  hostName,
+  pkgs-stable,
+  ...
+}:
 
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
@@ -9,5 +14,6 @@
   home-manager.extraSpecialArgs = {
     inherit inputs;
     inherit hostName;
+    inherit pkgs-stable;
   };
 }

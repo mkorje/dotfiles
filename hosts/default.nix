@@ -12,6 +12,9 @@ let
       specialArgs = {
         inherit inputs;
         inherit hostName;
+        pkgs-stable = import inputs.nixpkgs-stable {
+          inherit system;
+        };
         # vars = {
         #   username = "";
         #   name = "";
