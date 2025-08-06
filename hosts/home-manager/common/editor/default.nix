@@ -21,7 +21,9 @@
       clang-tools
       cmake-language-server
       fish-lsp
+      google-java-format
       harper
+      jdt-language-server
       lldb
       marksman
       nil
@@ -65,6 +67,21 @@
           name = "nix";
           auto-format = true;
           formatter.command = "nixfmt";
+        }
+        {
+          name = "java";
+          indent = {
+            tab-width = 4;
+            unit = "  ";
+          };
+          auto-format = true;
+          formatter = {
+            command = "google-java-format";
+            args = [
+              "--aosp"
+              "-"
+            ];
+          };
         }
         {
           name = "toml";
