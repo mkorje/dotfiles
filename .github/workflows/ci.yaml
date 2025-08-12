@@ -10,7 +10,7 @@ jobs:
     name: Checks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: nixbuild/nix-quick-install-action@v32
         with:
           nix_on_tmpfs: true
@@ -30,7 +30,7 @@ jobs:
       - uses: mkorje/free-disk-space-action@v1
         with:
           android-sdk: true
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: nixbuild/nix-quick-install-action@v32
         with:
           nix_conf: |
