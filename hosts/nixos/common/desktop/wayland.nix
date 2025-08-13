@@ -66,6 +66,6 @@ in
   # look at theming: https://github.com/apognu/tuigreet?tab=readme-ov-file#theming
   services.greetd = {
     enable = true;
-    settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --time --remember --remember-session";
+    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --time --remember --remember-session";
   };
 }
