@@ -15,8 +15,8 @@
   ];
 
   systemd.network.enable = true;
-  systemd.network.networks."10-enp7s0" = {
-    matchConfig.Name = "enp7s0";
+  systemd.network.networks."10-wan" = {
+    matchConfig.Type = "ether";
     networkConfig.DHCP = "yes";
     linkConfig.RequiredForOnline = "routable";
   };
