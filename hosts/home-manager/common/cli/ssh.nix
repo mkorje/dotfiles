@@ -35,16 +35,22 @@ in
         identityFile = gitIdentityFile;
       };
 
-      "comp30023" = {
-        user = "mkortge";
-        hostname = "172.26.133.239";
-        proxyCommand = "uni-connect %h %p";
-        extraOptions.controlPersist = "no";
-      };
+      # "comp30023" = {
+      #   user = "mkortge";
+      #   hostname = "172.26.133.239";
+      #   proxyCommand = "uni-connect %h %p";
+      #   extraOptions.controlPersist = "no";
+      # };
 
       "lietuvens" = {
         user = "admin";
         hostname = "172.16.3.100";
+        identityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
+      };
+
+      "hermes" = {
+        user = "admin";
+        hostname = "139.84.200.35";
         identityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
       };
 

@@ -39,4 +39,9 @@ in
   aizsaule = mkSystem { hostName = "aizsaule"; };
 
   lietuvens = mkSystem { hostName = "lietuvens"; };
+
+  hermes = mkSystem {
+    hostName = "hermes";
+    domain = "pist.is";
+  };
 }
