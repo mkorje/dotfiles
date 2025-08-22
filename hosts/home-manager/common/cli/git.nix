@@ -32,4 +32,27 @@
   };
 
   programs.gitui.enable = false;
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        name = "mkorje";
+        email = "max@mkor.je";
+      };
+      ui = {
+        paginate = "never";
+        default-command = [
+          "log"
+          "--reversed"
+        ];
+      };
+      signing = {
+        behavior = "drop";
+        backend = "ssh";
+        key = "~/.ssh/id_ed25519_sk_rk_git-sign.pub";
+      };
+      git.sign-on-push = true;
+    };
+  };
 }
