@@ -5,6 +5,9 @@
     ./hardware.nix
     ../common
     ../common/server
+
+    ./nginx.nix
+    ./headscale.nix
   ];
 
   boot.loader.grub.enable = lib.mkForce true;

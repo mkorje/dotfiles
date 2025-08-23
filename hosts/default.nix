@@ -12,6 +12,7 @@ let
       specialArgs = {
         inherit inputs;
         inherit hostName;
+        inherit domain;
         pkgs-stable = import inputs.nixpkgs-stable {
           inherit system;
         };
