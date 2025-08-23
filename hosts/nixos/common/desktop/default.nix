@@ -13,7 +13,7 @@
   ];
 
   virtualisation.docker = {
-    enable = true;
+    enable = false;
   };
 
   environment.persistence."/persist" = {
