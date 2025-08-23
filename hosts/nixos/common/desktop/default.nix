@@ -30,7 +30,6 @@
     "steam-unwrapped"
     "discord"
     "zoom"
-    "epsonscan2"
   ];
 
   environment.systemPackages = with pkgs; [
@@ -84,25 +83,9 @@
     groups."mkorje" = { };
   };
 
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-  };
-
-  # printing
   services.printing = {
     enable = true;
     drivers = [ pkgs.epson-escpr2 ];
-  };
-
-  hardware.sane = {
-    enable = true;
-    extraBackends = [
-      (pkgs.epsonscan2.override {
-        withNonFreePlugins = true;
-        withGui = false;
-      })
-    ];
   };
 
   hardware.printers = {
@@ -111,7 +94,7 @@
         name = "EPSON30478C";
         description = "EPSON ET-3800 Series";
         location = "Home";
-        deviceUri = "ipps://192.168.0.4/ipp/print";
+        deviceUri = "ipps://172.18.1.38/ipp/print";
         model = "epson-inkjet-printer-escpr2/Epson-ET-3800_Series-epson-escpr2-en.ppd";
         ppdOptions = {
           PageSize = "A4";
