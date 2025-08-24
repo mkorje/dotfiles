@@ -31,9 +31,9 @@
         '';
       };
       locations."/robots.txt" = {
-        return = "200 'User-agent: *\nDisallow: /\n'";
         extraConfig = ''
-          default_type text/plain;
+          rewrite ^/(.*)  $1;
+          return 200 "User-agent: *\nDisallow: /";
         '';
       };
     };
