@@ -20,6 +20,10 @@
       useACMEHost = domain;
       quic = true;
       kTLS = true;
+      listenAddresses = [
+        "139.84.200.35"
+        "[2401:c080:2000:1e23::1]"
+      ];
       locations."/" = {
         return = "200 '<html><body>It works</body></html>'";
         extraConfig = ''

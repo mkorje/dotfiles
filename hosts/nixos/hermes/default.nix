@@ -17,12 +17,13 @@
   systemd.network.networks."10-wan" = {
     matchConfig.Type = "ether";
     linkConfig.RequiredForOnline = "routable";
-    address = [ "139.84.200.35/23" ];
-    routes = [
-      {
-        Gateway = "139.84.200.1";
-        Metric = 1000;
-      }
+    address = [
+      "139.84.200.35/23"
+      "2401:c080:2000:1e23::1/64"
+    ];
+    gateway = [
+      "fe80::1"
+      "139.84.200.1"
     ];
   };
 
