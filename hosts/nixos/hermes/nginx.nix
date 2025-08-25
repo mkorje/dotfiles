@@ -37,6 +37,13 @@
       add_header Cross-Origin-Opener-Policy same-origin always;
     '';
 
+    resolver.addresses =
+      let
+        isIPv6 = addr: builtins.match ".*:.*:.*" addr != null;
+        escapeIPv6 = addr: if isIPv6 addr then "[${addr}]" else addr;
+      in
+      map escapeIPv6 config.networking.nameservers;
+
     virtualHosts."${domain}" = {
       default = true;
       forceSSL = true;
