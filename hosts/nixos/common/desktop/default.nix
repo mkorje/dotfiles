@@ -31,7 +31,6 @@
     "steam-run"
     "steam-unwrapped"
     "discord"
-    "zoom"
   ];
 
   environment.systemPackages = with pkgs; [

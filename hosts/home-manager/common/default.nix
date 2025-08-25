@@ -62,8 +62,5 @@
 
     # unfree
     discord
-    (zoom-us.override (_prev: {
-      hyprlandXdgDesktopPortalSupport = true;
-    }))
   ];
 }
