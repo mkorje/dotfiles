@@ -1,17 +1,28 @@
 { pkgs, ... }:
 
 {
-  # vpn
   services.mullvad-vpn = {
     enable = true;
     package = pkgs.mullvad-vpn;
     enableExcludeWrapper = false;
   };
 
-  # bluetooth
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    useRoutingFeatures = "client";
+    extraUpFlags = [ "--login-server https://tailscale.pist.is" ];
+  };
+
   hardware.bluetooth = {
-    enable = true; # enables support for Bluetooth
-    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    enable = true;
+    powerOnBoot = true;
   };
   services.blueman.enable = true;
+
+  environment.persistence."/persist".directories = [
+    "/var/lib/bluetooth"
+    "/etc/mullvad-vpn"
+    "/var/lib/tailscale"
+  ];
 }

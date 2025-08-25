@@ -18,13 +18,6 @@
     enable = false;
   };
 
-  environment.persistence."/persist" = {
-    directories = [
-      "/var/lib/bluetooth"
-      "/etc/mullvad-vpn"
-    ];
-  };
-
   allowedUnfreePackages = [
     "steam"
     "steam-original"
