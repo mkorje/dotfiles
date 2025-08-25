@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   domain,
   ...
 }:
@@ -11,6 +10,7 @@
     ../common
     ../common/server
     ../common/nginx.nix
+    ../common/acme.nix
 
     ./headscale.nix
   ];
@@ -57,27 +57,11 @@
     };
   };
 
-  sops.secrets."hermes/acme/hetzner/apiKey" = { };
-
-  security.acme = {
-    acceptTerms = true;
-    defaults = {
-      email = "acme@mkor.je";
-      dnsProvider = "hetzner";
-      credentialFiles."HETZNER_API_KEY_FILE" = config.sops.secrets."hermes/acme/hetzner/apiKey".path;
-      keyType = "ec384";
-      inherit (config.services.nginx) group;
-    };
-    certs = {
-      "mkor.je".extraDomainNames = [ "*.mkor.je" ];
-      "pist.is".extraDomainNames = [ "*.pist.is" ];
-      "elp.is".extraDomainNames = [ "*.elp.is" ];
-    };
+  security.acme.certs = {
+    "mkor.je".extraDomainNames = [ "*.mkor.je" ];
+    "pist.is".extraDomainNames = [ "*.pist.is" ];
+    "elp.is".extraDomainNames = [ "*.elp.is" ];
   };
-
-  environment.persistence."/persist".directories = [
-    "/var/lib/acme"
-  ];
 
   system.stateVersion = "25.05";
 }

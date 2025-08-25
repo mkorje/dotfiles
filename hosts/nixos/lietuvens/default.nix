@@ -4,12 +4,8 @@
     ./frigate.nix
     ../common
     ../common/secureboot.nix
+    ../common/acme.nix
     ../common/server
-  ];
-
-  networking.firewall.allowedTCPPorts = [
-    80
-    1984
   ];
 
   systemd.network.enable = true;

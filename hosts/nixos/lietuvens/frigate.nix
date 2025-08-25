@@ -27,7 +27,7 @@
     config.sops.templates."frigate/authentication.env".path;
 
   services.frigate.enable = true;
-  services.frigate.hostname = "localhost";
+  services.frigate.hostname = "frigate.pist.is";
   services.frigate.settings.telemetry.version_check = false;
 
   services.frigate.vaapiDriver = "iHD";
@@ -212,5 +212,19 @@
     "BACK_PASSWORD:${config.sops.secrets."frigate/cameras/back/password".path}"
     "DOOR_PASSWORD:${config.sops.secrets."frigate/cameras/door/password".path}"
     "SIDE_PASSWORD:${config.sops.secrets."frigate/cameras/side/password".path}"
+  ];
+
+  services.nginx.virtualHosts."${config.services.frigate.hostname}" = {
+    default = true;
+    forceSSL = true;
+    enableACME = true;
+    acmeRoot = null;
+    kTLS = true;
+  };
+
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    1984
   ];
 }
