@@ -12,6 +12,8 @@
     ./wayland.nix
   ];
 
+  nix.daemonCPUSchedPolicy = "idle";
+
   virtualisation.docker = {
     enable = false;
   };
