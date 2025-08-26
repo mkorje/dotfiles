@@ -8,6 +8,7 @@
       server_url = "https://tailscale.${domain}";
       dns.base_domain = "tailnet.${domain}";
       dns.nameservers.global = config.networking.nameservers;
+      dns.nameservers.split."pist.is" = [ "172.16.0.1" ];
       derp.server = {
         enabled = true;
         ipv4 = "139.84.200.35";
