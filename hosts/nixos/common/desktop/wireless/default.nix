@@ -1,17 +1,11 @@
 { config, ... }:
 
 {
-  # wireless networking - iwd
   networking.wireless.iwd = {
     enable = true;
-    # https://man.archlinux.org/man/iwd.config.5
     settings = {
       General = {
-        EnableNetworkConfiguration = true;
         AddressRandomization = "network";
-      };
-      Settings = {
-        AutoConnect = true;
       };
     };
   };

@@ -8,7 +8,6 @@
     ../common/server
   ];
 
-  systemd.network.enable = true;
   systemd.network.networks."10-enp6s0" = {
     matchConfig.Name = "enp6s0";
     address = [ "172.16.3.100/16" ];

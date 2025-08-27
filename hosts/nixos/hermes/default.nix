@@ -18,7 +18,6 @@
   boot.loader.grub.enable = lib.mkForce true;
   boot.loader.grub.device = "/dev/vda";
 
-  systemd.network.enable = true;
   systemd.network.networks."10-wan" = {
     matchConfig.Type = "ether";
     linkConfig.RequiredForOnline = "routable";

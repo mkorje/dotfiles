@@ -59,6 +59,7 @@
   networking.nftables.enable = true;
   networking.firewall.pingLimit = "2/second";
 
+  systemd.network.enable = true;
   networking.useDHCP = false;
   networking.dhcpcd.enable = false;
 

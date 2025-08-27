@@ -19,6 +19,17 @@
     brightnessctl
   ];
 
+  systemd.network.networks."10-wan" = {
+    matchConfig.Type = "wlan";
+    networkConfig = {
+      DHCP = "yes";
+      UseDomains = "no";
+      Domains = [ "~." ];
+      IgnoreCarrierLoss = "3s";
+    };
+    linkConfig.RequiredForOnline = "routable";
+  };
+
   boot.loader = {
     systemd-boot = {
       enable = true;
