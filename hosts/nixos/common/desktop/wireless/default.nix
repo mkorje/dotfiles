@@ -61,4 +61,15 @@
   environment.persistence."/persist".directories = [
     "/var/lib/tailscale"
   ];
+
+  networking.nftables.ruleset = ''
+    table inet excludeTraffic {
+      chain excludeOutgoing {
+        type route hook output priority 0; policy accept;
+        ip daddr 172.16.0.0/16 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+        ip daddr 100.64.0.0/10 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+        ip6 daddr fd7a:115c:a1e0::/48 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+      }
+    }
+  '';
 }
