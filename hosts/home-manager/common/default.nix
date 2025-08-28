@@ -51,7 +51,7 @@
     glow # markdown viewer
     pandoc
 
-    anki
+    # anki
 
     # not yet in nixos-unstable
     # filen-cli
