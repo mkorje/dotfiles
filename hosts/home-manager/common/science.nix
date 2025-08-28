@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 
 {
   home.packages = with pkgs; [
@@ -13,8 +13,6 @@
   # CAS
   programs.sagemath = {
     enable = true;
-    package = pkgs.sage.override {
-      requireSageTests = false;
-    };
+    package = pkgs-stable.sage;
   };
 }
