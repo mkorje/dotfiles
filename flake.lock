@@ -74,11 +74,11 @@
     },
     "frigate": {
       "locked": {
-        "lastModified": 1750665486,
-        "narHash": "sha256-K6rhsARi6eZdaYADGMVgJzC0PkQ1vbDcB7QLeMbpYvg=",
+        "lastModified": 1756351774,
+        "narHash": "sha256-HwHR4IHJwEsAthsSncLhlkBrGPwNBFRfP5Xiwwe5IJ8=",
         "owner": "mkorje",
         "repo": "frigate",
-        "rev": "95c157c1640e376dd2d08fcb497475bfcce00526",
+        "rev": "29121ab02053f3e09d3533efce15f50f6f3408eb",
         "type": "github"
       },
       "original": {
