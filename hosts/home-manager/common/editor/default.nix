@@ -19,7 +19,7 @@
     extraPackages = with pkgs; [
       bash-language-server
       clang-tools
-      cmake-language-server
+      # cmake-language-server
       fish-lsp
       google-java-format
       harper

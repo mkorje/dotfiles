@@ -9,12 +9,16 @@ in
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "no";
-    compression = true;
-    controlMaster = "auto";
-    controlPath = "~/.ssh/control-%r@%h:%p";
-    controlPersist = "10m";
+    enableDefaultConfig = false;
     matchBlocks = {
+      "*" = {
+        addKeysToAgent = "no";
+        compression = true;
+        controlMaster = "auto";
+        controlPath = "~/.ssh/control-%r@%h:%p";
+        controlPersist = "10m";
+      };
+
       "github.com" = {
         user = "git";
         identityFile = gitIdentityFile;
