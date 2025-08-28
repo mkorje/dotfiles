@@ -39,7 +39,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    frigate.url = "github:mkorje/frigate";
+    nixpkgs-frigate.url = "github:NixOS/nixpkgs?rev=dafd0cf5690607735121f2d63adcb07df9a49704";
+    frigate.url = "github:mkorje/frigate?ref=v0.15.2";
 
     wallpapers = {
       url = "github:mkorje/wallpapers";

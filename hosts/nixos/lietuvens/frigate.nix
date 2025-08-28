@@ -1,12 +1,23 @@
 {
   config,
   inputs,
+  pkgs,
   ...
 }:
 
+let
+  pkgs-frigate = import inputs.nixpkgs-frigate {
+    inherit (pkgs) system;
+    overlays = [
+      inputs.frigate.overlays.default
+    ];
+  };
+in
 {
-  nixpkgs.overlays = [
-    inputs.frigate.overlays.default
+  disabledModules = [ "services/video/frigate.nix" ];
+
+  imports = [
+    "${inputs.nixpkgs-frigate}/nixos/modules/services/video/frigate.nix"
   ];
 
   sops.secrets."frigate/cameras/front/password".owner = "frigate";
@@ -27,6 +38,7 @@
     config.sops.templates."frigate/authentication.env".path;
 
   services.frigate.enable = true;
+  services.frigate.package = pkgs-frigate.frigate;
   services.frigate.hostname = "frigate.pist.is";
   services.frigate.settings.telemetry.version_check = false;
 

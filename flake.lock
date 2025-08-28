@@ -74,15 +74,16 @@
     },
     "frigate": {
       "locked": {
-        "lastModified": 1756351774,
-        "narHash": "sha256-HwHR4IHJwEsAthsSncLhlkBrGPwNBFRfP5Xiwwe5IJ8=",
+        "lastModified": 1750665486,
+        "narHash": "sha256-K6rhsARi6eZdaYADGMVgJzC0PkQ1vbDcB7QLeMbpYvg=",
         "owner": "mkorje",
         "repo": "frigate",
-        "rev": "29121ab02053f3e09d3533efce15f50f6f3408eb",
+        "rev": "95c157c1640e376dd2d08fcb497475bfcce00526",
         "type": "github"
       },
       "original": {
         "owner": "mkorje",
+        "ref": "v0.15.2",
         "repo": "frigate",
         "type": "github"
       }
@@ -223,6 +224,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-frigate": {
+      "locked": {
+        "lastModified": 1752595769,
+        "narHash": "sha256-z+SQwVJ0FdVdkkv06i3AnfZQU+eyEpOFJJShOOxAgYI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "dafd0cf5690607735121f2d63adcb07df9a49704",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "dafd0cf5690607735121f2d63adcb07df9a49704",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1730741070,
@@ -292,6 +309,7 @@
         "lanzaboote": "lanzaboote",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-frigate": "nixpkgs-frigate",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "sops-nix": "sops-nix",
         "starship-nerd-font-symbols": "starship-nerd-font-symbols",
