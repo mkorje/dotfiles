@@ -39,6 +39,11 @@ in
         identityFile = gitIdentityFile;
       };
 
+      "swen20003.eng.unimelb.edu.au" = {
+        user = "git";
+        identityFile = gitIdentityFile;
+      };
+
       # "comp30023" = {
       #   user = "mkortge";
       #   hostname = "172.26.133.239";
