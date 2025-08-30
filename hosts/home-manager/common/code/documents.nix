@@ -19,11 +19,16 @@
 
   programs.zathura = {
     enable = true;
-    package = pkgs.zathura;
     extraConfig = "";
     mappings = { };
     options = {
       selection-clipboard = "clipboard";
     };
+  };
+
+  programs.foliate = {
+    enable = true;
+    settings = { };
+    themes = { };
   };
 }
