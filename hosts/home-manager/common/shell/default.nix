@@ -7,6 +7,8 @@
     enable = true;
     package = pkgs.fish;
     functions = {
+      # Usage:
+      # nix build --print-out-paths .#nixosConfigurations.<HOSTNAME>.config.system.build.toplevel | nixos-switch
       "nixos-switch" = ''
         if not count $argv > /dev/null
           read drv
