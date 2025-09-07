@@ -59,6 +59,7 @@
         "pin, class:^(librewolf)$, title:^(Picture-in-Picture)$"
         "size 800 450, class:^(librewolf)$, title:^(Picture-in-Picture)$"
       ];
+      xwayland.force_zero_scaling = true;
       misc = {
         disable_hyprland_logo = true;
         vfr = true;
