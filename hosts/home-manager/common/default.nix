@@ -41,6 +41,7 @@
     nerd-fonts.blex-mono
 
     keepassxc
+    gopass
     pcmanfm
     #electrum-ltc
     qbittorrent
@@ -56,6 +57,8 @@
     # not yet in nixos-unstable
     # filen-cli
     filen-desktop
+
+    simplex-chat-desktop
 
     # insecure
     # cinny-desktop
