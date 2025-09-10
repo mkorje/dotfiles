@@ -103,4 +103,6 @@
   services.pcscd.enable = true;
 
   services.libinput.enable = true;
+
+  services.udisks2.enable = true;
 }

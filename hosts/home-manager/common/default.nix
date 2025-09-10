@@ -33,6 +33,21 @@
 
   fonts.fontconfig.enable = true;
 
+  services.udiskie = {
+    enable = true;
+    settings = {
+      device_config = [
+        {
+          id_label = "ssd";
+          options = [
+            "noatime"
+            "compress-force=zstd:1"
+          ];
+        }
+      ];
+    };
+  };
+
   # very nice music player
   services.amberol.enable = true;
 
