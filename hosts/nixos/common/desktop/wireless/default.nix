@@ -43,7 +43,6 @@
     ln -sf ${config.sops.templates."Aether.psk".path} /var/lib/iwd/Aether.psk
     ln -sf ${config.sops.templates."TeamSAM.psk".path} /var/lib/iwd/TeamSAM.psk
     ln -sf ${config.sops.templates."eduroam.8021x".path} /var/lib/iwd/eduroam.8021x
-    touch /var/lib/iwd/KEMPINSKI.open
   '';
 
   services.tailscale = {
