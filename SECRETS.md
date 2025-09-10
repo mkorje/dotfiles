@@ -21,8 +21,8 @@ yubikey serials
 | ykb-fido-ssh:git-auth | 2024-03-08 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIP1S8LK7srLzZTWMCl9aq0z7a4zOhseWpkwplrfGS79EAAAADHNzaDpnaXQtYXV0aA== ssh:git-auth` |
 | yka-fido-ssh:git-sign | 2024-03-04 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIF8WxK7cDi0iuCous6VEp58VPJv5ZpjiXSBxxtBJ/uHBAAAADHNzaDpnaXQtc2lnbg== ssh:git-sign` |
 | ykb-fido-ssh:git-sign | 2024-03-08 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKlgP5z70ru2goxTGh3xNKytLGgdyaKbMHW8MICrIGdiAAAADHNzaDpnaXQtc2lnbg== ssh:git-sign` |
-| yka-fido-ssh:comp30023 | 2025-03-04 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAINvK1J1/YAmEiYwe6DbHqfdo+EBegUwoe9xJ91s/xD6FAAAADXNzaDpjb21wMzAwMjM= ssh:comp30023` |
 | yka-fido-ssh:typst | 2025-08-04 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIK7zLWr+QDJoBzSMGxT2NO4tgkwXF+0+a55bkLRjDsAwAAAACXNzaDp0eXBzdA== ssh:typst` |
+| yka-fido-ssh:magma | 2025-09-10 | `sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIGCA1ZSKoUeNg2nP2GkWJfbvjL9Bf2muXJDu2WGc2w+YAAAACXNzaDptYWdtYQ== ssh:magma` |
 
 ### FIDO2 Resident Keys (for ssh)
 
