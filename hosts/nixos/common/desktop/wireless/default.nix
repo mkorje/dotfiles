@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   networking.wireless.iwd = {
@@ -47,6 +47,7 @@
 
   services.tailscale = {
     enable = true;
+    package = pkgs.tailscale.overrideAttrs { doCheck = false; };
     openFirewall = true;
     useRoutingFeatures = "client";
     extraUpFlags = [ "--login-server https://tailscale.pist.is" ];
