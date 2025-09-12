@@ -31,7 +31,6 @@
     openrazer-daemon
     polychromatic
     pwvucontrol
-    sonusmix
   ];
 
   # Pipewire
