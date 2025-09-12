@@ -72,7 +72,7 @@
           name = "java";
           indent = {
             tab-width = 4;
-            unit = "  ";
+            unit = "    ";
           };
           auto-format = true;
           formatter = {
