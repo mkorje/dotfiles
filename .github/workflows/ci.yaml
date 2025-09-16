@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        system: [aizsaule, auseklis, lietuvens, hermes]
+        system: [aizsaule, auseklis, meness]
     name: "${{ matrix.system }}: NixOS configuration"
     runs-on: ubuntu-latest
     steps:

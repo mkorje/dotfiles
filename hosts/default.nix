@@ -39,13 +39,16 @@ in
   auseklis = mkSystem { hostName = "auseklis"; };
   aizsaule = mkSystem { hostName = "aizsaule"; };
 
-  lietuvens = mkSystem {
-    hostName = "lietuvens";
+  meness = mkSystem {
+    hostName = "meness";
     domain = "pist.is";
   };
-
-  hermes = mkSystem {
-    hostName = "hermes";
-    domain = "pist.is";
-  };
+  # lietuvens = mkSystem {
+  #   hostName = "lietuvens";
+  #   domain = "pist.is";
+  # };
+  # hermes = mkSystem {
+  #   hostName = "hermes";
+  #   domain = "pist.is";
+  # };
 }
