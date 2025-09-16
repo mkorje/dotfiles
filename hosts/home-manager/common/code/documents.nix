@@ -5,6 +5,8 @@
     typst
     hayagriva
 
+    texliveFull
+
     xournalpp
     libreoffice-fresh
     pkgs-stable.calibre
