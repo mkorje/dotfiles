@@ -1,10 +1,11 @@
 {
   imports = [
     ./hardware.nix
-    # ./frigate.nix
+    ./frigate.nix
     ../common
     ../common/secureboot.nix
-    # ../common/acme.nix
+    ../common/nvidia.nix
+    ../common/acme.nix
     ../common/server
   ];
 

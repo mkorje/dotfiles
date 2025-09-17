@@ -1,25 +1,6 @@
+{ config, ... }:
+
 {
-  config,
-  inputs,
-  pkgs,
-  ...
-}:
-
-let
-  pkgs-frigate = import inputs.nixpkgs-frigate {
-    inherit (pkgs) system;
-    overlays = [
-      inputs.frigate.overlays.default
-    ];
-  };
-in
-{
-  disabledModules = [ "services/video/frigate.nix" ];
-
-  imports = [
-    "${inputs.nixpkgs-frigate}/nixos/modules/services/video/frigate.nix"
-  ];
-
   sops.secrets."frigate/cameras/front/password".owner = "frigate";
   sops.secrets."frigate/cameras/back/password".owner = "frigate";
   sops.secrets."frigate/cameras/door/password".owner = "frigate";
@@ -38,13 +19,12 @@ in
     config.sops.templates."frigate/authentication.env".path;
 
   services.frigate.enable = true;
-  services.frigate.package = pkgs-frigate.frigate;
   services.frigate.hostname = "frigate.pist.is";
   services.frigate.settings.telemetry.version_check = false;
 
-  services.frigate.vaapiDriver = "iHD";
+  services.frigate.vaapiDriver = "nvidia";
   services.frigate.settings.ffmpeg = {
-    hwaccel_args = "preset-vaapi";
+    hwaccel_args = "preset-nvidia";
     input_args = "preset-rtsp-restream-low-latency";
     # This is `preset-record-generic-audio-copy` with `-copyinkf` added. May be
     # due to https://trac.ffmpeg.org/ticket/11531, should be fixed in the next
