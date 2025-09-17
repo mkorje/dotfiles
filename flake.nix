@@ -48,6 +48,8 @@
       url = "https://starship.rs/presets/toml/nerd-font-symbols.toml";
       flake = false;
     };
+
+    nixpkgs-frigate.url = "github:mkorje/nixpkgs/frigate-rebase";
   };
 
   outputs =

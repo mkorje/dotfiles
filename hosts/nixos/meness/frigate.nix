@@ -1,7 +1,18 @@
-{ config, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 
+let
+  pkgs-frigate = import inputs.nixpkgs-frigate {
+    inherit (pkgs) system;
+  };
+in
 {
   services.frigate.enable = true;
+  services.frigate.package = pkgs-frigate.frigate;
   services.frigate.hostname = "frigate.pist.is";
   services.frigate.settings.telemetry.version_check = false;
 
