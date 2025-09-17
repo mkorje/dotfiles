@@ -62,31 +62,20 @@
       xwayland.force_zero_scaling = true;
       misc = {
         disable_hyprland_logo = true;
-        vfr = true;
+        disable_splash_rendering = true;
       };
       ecosystem = {
         no_update_news = true;
         no_donation_nag = true;
       };
-      animations = {
-        enabled = true;
-      };
-      # cursor = {
-      #   enable_hyprcursor = false;
-      # };
       gestures = {
-        workspace_swipe = true;
-        workspace_swipe_fingers = 3;
         workspace_swipe_distance = 100;
-        workspace_swipe_invert = true;
         workspace_swipe_min_speed_to_force = 1;
-        workspace_swipe_cancel_ratio = 0.5;
-        workspace_swipe_create_new = true;
         workspace_swipe_direction_lock = false;
-        workspace_swipe_direction_lock_threshold = 10;
-        workspace_swipe_forever = false;
-        workspace_swipe_use_r = false;
       };
+      gesture = [
+        "3, horizontal, workspace"
+      ];
     };
   };
 }
