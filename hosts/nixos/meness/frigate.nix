@@ -37,6 +37,25 @@
     };
   };
 
+  sops.secrets."frigate/genai/gemini/apiKey".owner = "frigate";
+  sops.templates."frigate/secrets.env" = {
+    owner = "frigate";
+    content = ''
+      FRIGATE_GENAI_API_KEY=${config.sops.placeholder."frigate/genai/gemini/apiKey"}
+    '';
+  };
+
+  services.frigate.checkConfig = false;
+  systemd.services.frigate.serviceConfig.EnvironmentFile =
+    config.sops.templates."frigate/secrets.env".path;
+
+  services.frigate.settings.genai = {
+    enabled = true;
+    provider = "gemini";
+    api_key = "{FRIGATE_GENAI_API_KEY}";
+    model = "gemini-2.5-flash";
+  };
+
   services.frigate.settings.birdseye.enabled = false;
   services.frigate.settings.audio.enabled = true;
   services.frigate.settings.snapshots.enabled = true;
