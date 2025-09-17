@@ -43,10 +43,6 @@ in
     hostName = "meness";
     domain = "pist.is";
   };
-  # lietuvens = mkSystem {
-  #   hostName = "lietuvens";
-  #   domain = "pist.is";
-  # };
   # hermes = mkSystem {
   #   hostName = "hermes";
   #   domain = "pist.is";
