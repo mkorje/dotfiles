@@ -57,6 +57,12 @@ in
         identityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
       };
 
+      "meness" = {
+        user = "admin";
+        hostname = "172.16.1.100";
+        identityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
+      };
+
       "hermes" = {
         user = "admin";
         hostname = "139.84.200.35";
