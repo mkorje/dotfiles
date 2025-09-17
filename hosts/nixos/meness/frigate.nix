@@ -1,23 +1,6 @@
 { config, ... }:
 
 {
-  sops.secrets."frigate/cameras/front/password".owner = "frigate";
-  sops.secrets."frigate/cameras/back/password".owner = "frigate";
-  sops.secrets."frigate/cameras/door/password".owner = "frigate";
-  sops.secrets."frigate/cameras/side/password".owner = "frigate";
-  sops.templates."frigate/authentication.env" = {
-    owner = "frigate";
-    content = ''
-      FRIGATE_FRONT_PASSWORD=${config.sops.placeholder."frigate/cameras/front/password"}
-      FRIGATE_BACK_PASSWORD=${config.sops.placeholder."frigate/cameras/back/password"}
-      FRIGATE_DOOR_PASSWORD=${config.sops.placeholder."frigate/cameras/door/password"}
-      FRIGATE_SIDE_PASSWORD=${config.sops.placeholder."frigate/cameras/side/password"}
-    '';
-  };
-
-  systemd.services.frigate.serviceConfig.EnvironmentFile =
-    config.sops.templates."frigate/authentication.env".path;
-
   services.frigate.enable = true;
   services.frigate.hostname = "frigate.pist.is";
   services.frigate.settings.telemetry.version_check = false;
@@ -40,6 +23,8 @@
   };
 
   services.frigate.settings.motion.enabled = true;
+  services.frigate.settings.face_recognition.enabled = true;
+  services.frigate.settings.face_recognition.model_size = "large";
   services.frigate.settings.detect.enabled = true;
   services.frigate.settings.detectors = {
     coral1 = {
@@ -51,13 +36,9 @@
       device = "pci:1";
     };
   };
-  services.frigate.settings.objects.track = [
-    "person"
-    "car"
-  ];
 
   services.frigate.settings.birdseye.enabled = false;
-  services.frigate.settings.audio.enabled = false;
+  services.frigate.settings.audio.enabled = true;
   services.frigate.settings.snapshots.enabled = true;
   services.frigate.settings.record = {
     enabled = true;
@@ -67,6 +48,17 @@
     };
     alerts.retain.days = 10;
     detections.retain.days = 10;
+  };
+
+  services.frigate.settings.go2rtc.streams = {
+    front = [ ];
+    back = [ ];
+    door = [ ];
+    side = [ ];
+    front_sub = [ ];
+    back_sub = [ ];
+    door_sub = [ ];
+    side_sub = [ ];
   };
 
   services.frigate.settings.camera_groups = {
@@ -90,33 +82,6 @@
     };
   };
 
-  services.frigate.settings.go2rtc.streams = {
-    front = [
-      "rtsp://stream:{FRIGATE_FRONT_PASSWORD}@172.19.0.110/cam/realmonitor?channel=1&subtype=0"
-    ];
-    back = [
-      "rtsp://stream:{FRIGATE_BACK_PASSWORD}@172.19.0.120/cam/realmonitor?channel=1&subtype=0"
-    ];
-    door = [
-      "rtsp://stream:{FRIGATE_DOOR_PASSWORD}@172.19.0.130/cam/realmonitor?channel=1&subtype=0"
-    ];
-    side = [
-      "rtsp://stream:{FRIGATE_SIDE_PASSWORD}@172.19.0.140/cam/realmonitor?channel=1&subtype=0"
-    ];
-    front_sub = [
-      "rtsp://stream:{FRIGATE_FRONT_PASSWORD}@172.19.0.110/cam/realmonitor?channel=1&subtype=2"
-    ];
-    back_sub = [
-      "rtsp://stream:{FRIGATE_BACK_PASSWORD}@172.19.0.120/cam/realmonitor?channel=1&subtype=2"
-    ];
-    door_sub = [
-      "rtsp://stream:{FRIGATE_DOOR_PASSWORD}@172.19.0.130/cam/realmonitor?channel=1&subtype=1"
-    ];
-    side_sub = [
-      "rtsp://stream:{FRIGATE_SIDE_PASSWORD}@172.19.0.140/cam/realmonitor?channel=1&subtype=1"
-    ];
-  };
-
   services.frigate.settings.cameras.front = {
     webui_url = "http://172.19.0.110";
     ffmpeg.inputs = [
@@ -132,8 +97,6 @@
         ];
       }
     ];
-    objects.filters.person.mask = "0.02,0.34,0.14,0.34,0.14,0.57,0.02,0.57";
-    motion.contour_area = 30;
   };
 
   services.frigate.settings.cameras.back = {
@@ -168,7 +131,6 @@
         ];
       }
     ];
-    motion.contour_area = 20;
   };
 
   services.frigate.settings.cameras.side = {
@@ -205,6 +167,10 @@
     "DOOR_PASSWORD:${config.sops.secrets."frigate/cameras/door/password".path}"
     "SIDE_PASSWORD:${config.sops.secrets."frigate/cameras/side/password".path}"
   ];
+  sops.secrets."frigate/cameras/front/password".owner = "frigate";
+  sops.secrets."frigate/cameras/back/password".owner = "frigate";
+  sops.secrets."frigate/cameras/door/password".owner = "frigate";
+  sops.secrets."frigate/cameras/side/password".owner = "frigate";
 
   services.nginx.virtualHosts."${config.services.frigate.hostname}" = {
     default = true;
