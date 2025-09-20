@@ -210,11 +210,11 @@
     },
     "nixpkgs-frigate": {
       "locked": {
-        "lastModified": 1758275432,
-        "narHash": "sha256-U1x3WB9Tt5XJmWfQK6BicNrkDOL1OxzUG45/TUYrBlY=",
+        "lastModified": 1758374880,
+        "narHash": "sha256-OlrYljlPXa5ITwjl2GoH2XZ4Ii8yLTnHc+3Br2Rhy0Q=",
         "owner": "mkorje",
         "repo": "nixpkgs",
-        "rev": "73f2fed0ca2f4f17097e35e1feca33025a2f557a",
+        "rev": "08252d9fde6dd0a214381511178c3d0da07c3cda",
         "type": "github"
       },
       "original": {
