@@ -82,6 +82,12 @@ in
     loadModels = [ "gemma3:4b" ];
   };
 
+  services.frigate.settings.semantic_search = {
+    enabled = true;
+    model = "jinav2";
+    model_size = "large";
+  };
+
   services.frigate.settings.birdseye.enabled = false;
   services.frigate.settings.audio.enabled = true;
   services.frigate.settings.snapshots.enabled = true;
