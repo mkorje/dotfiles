@@ -4,10 +4,15 @@
     ./frigate.nix
     ../common
     ../common/secureboot.nix
-    ../common/nvidia.nix
     ../common/acme.nix
     ../common/server
   ];
+
+  nvidia = {
+    enable = true;
+    headless = true;
+    cuda = true;
+  };
 
   systemd.network.networks."10-wan" = {
     matchConfig.Type = "ether";

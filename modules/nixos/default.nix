@@ -1,3 +1,3 @@
 {
-  #name = import ./name.nix;
+  nvidia = import ./nvidia.nix;
 }

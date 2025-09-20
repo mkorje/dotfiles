@@ -7,12 +7,13 @@
     ../common
 
     ../common/secureboot.nix
-    ../common/nvidia.nix
 
     ../common/desktop
 
     ../../home-manager
   ];
+
+  nvidia.enable = true;
 
   systemd.network.networks."10-wan" = {
     matchConfig.Type = "ether";

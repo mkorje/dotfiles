@@ -23,6 +23,7 @@ let
         # };
       };
       modules = [
+        inputs.self.nixosModules.nvidia
         ./nixos/${hostName}
         {
           networking = {
