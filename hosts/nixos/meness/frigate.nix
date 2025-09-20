@@ -74,6 +74,7 @@ in
     provider = "ollama";
     base_url = "http://localhost:11434";
     model = "gemma3:4b";
+    object_prompts.person = "Examine the person in these images from the {camera} security camera of a house. What are they doing and what might their actions suggest about their intent (e.g., delivering something, approaching a door, leaving an area, standing still)? If they are carrying or interacting with a package, include details about its source or destination. Do not describe the surroundings or static details. Keep your response direct and brief. It should be at most a couple of sentences and you should not add any introduction or conclusion.";
   };
 
   services.ollama = {
