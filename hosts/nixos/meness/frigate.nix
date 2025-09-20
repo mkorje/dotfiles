@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  lib,
   ...
 }:
 
@@ -16,6 +17,15 @@ in
   services.frigate.hostname = "frigate.pist.is";
   services.frigate.settings.telemetry.version_check = false;
 
+  systemd.services.frigate.environment.LD_LIBRARY_PATH = lib.mkForce (
+    lib.makeLibraryPath (
+      with pkgs;
+      [
+        libedgetpu
+        addDriverRunpath.driverLink
+      ]
+    )
+  );
   services.frigate.vaapiDriver = "nvidia";
   services.frigate.settings.ffmpeg = {
     hwaccel_args = "preset-nvidia";
