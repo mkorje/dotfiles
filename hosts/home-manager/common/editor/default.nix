@@ -39,7 +39,10 @@
       vale-ls
       yaml-language-server
 
-      # python
+      # Python
+      ruff
+      ty
+
       # ltex-ls
       # typos-lsp
       # typst-languagetool
@@ -67,6 +70,30 @@
           name = "nix";
           auto-format = true;
           formatter.command = "nixfmt";
+        }
+        {
+          name = "python";
+          file-types = [
+            "py"
+            "pyi"
+            "py3"
+            "pyw"
+            "ptl"
+            "rpy"
+            "cpy"
+            "ipy"
+            "pyt"
+            { glob = ".python_history"; }
+            { glob = ".pythonstartup"; }
+            { glob = ".pythonrc"; }
+            { glob = "*SConstruct"; }
+            { glob = "*SConscript"; }
+            { glob = "*sconstruct"; }
+            # Extras
+            "sage"
+            "spyx"
+          ];
+          auto-format = true;
         }
         {
           name = "java";
