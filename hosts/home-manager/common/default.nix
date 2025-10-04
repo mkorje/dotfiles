@@ -54,6 +54,8 @@
   home.packages = with pkgs; [
     # fonts
     nerd-fonts.blex-mono
+    arkpandora_ttf
+    liberation_ttf
 
     keepassxc
     gopass
@@ -80,5 +82,6 @@
 
     # unfree
     discord
+    staruml
   ];
 }

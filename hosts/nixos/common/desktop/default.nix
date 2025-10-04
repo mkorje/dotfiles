@@ -24,6 +24,7 @@
     "steam-run"
     "steam-unwrapped"
     "discord"
+    "staruml"
   ];
 
   environment.systemPackages = with pkgs; [
