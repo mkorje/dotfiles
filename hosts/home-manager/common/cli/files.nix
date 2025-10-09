@@ -19,7 +19,7 @@
     jpegoptim
     libwebp
     nodePackages_latest.svgo
-    mozjpeg
+    # mozjpeg
     scour
 
     # Videos

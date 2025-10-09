@@ -28,7 +28,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    dolphin-emu
+    # dolphin-emu
     openrazer-daemon
     polychromatic
     pwvucontrol
