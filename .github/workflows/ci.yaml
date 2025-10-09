@@ -27,10 +27,10 @@ jobs:
     name: "${{ matrix.system }}: NixOS configuration"
     runs-on: ubuntu-latest
     steps:
-      - uses: mkorje/free-disk-space-action@v1
-        with:
-          android-sdk: true
       - uses: actions/checkout@v5
+      - uses: wimpysworld/nothing-but-nix@v6
+        with:
+          nix-permission-edict: true
       - uses: nixbuild/nix-quick-install-action@v34
         with:
           nix_conf: |
