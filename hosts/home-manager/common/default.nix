@@ -8,6 +8,7 @@
   imports = [
     # sops-nix.homeManagerModules.sops
     inputs.catppuccin.homeModules.catppuccin
+    inputs.self.homeModules.university
 
     ./cli
     ./code

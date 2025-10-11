@@ -1,1 +1,4 @@
-{ monitors = import ./monitors.nix; }
+{
+  monitors = import ./monitors.nix;
+  university = import ./university.nix;
+}
