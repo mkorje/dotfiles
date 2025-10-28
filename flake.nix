@@ -45,7 +45,7 @@
     };
 
     starship-nerd-font-symbols = {
-      url = "https://starship.rs/presets/toml/nerd-font-symbols.toml";
+      url = "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.23.0/docs/public/presets/toml/nerd-font-symbols.toml";
       flake = false;
     };
 
