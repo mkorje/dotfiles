@@ -36,7 +36,9 @@
         #theme = cfg.theme;
       };
       extraPackages = with pkgs.bat-extras; [
-        batgrep
+        (batgrep.overrideAttrs (_: {
+          doCheck = false;
+        }))
         batman
         batpipe
         batwatch
