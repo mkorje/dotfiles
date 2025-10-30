@@ -367,13 +367,13 @@
     "starship-nerd-font-symbols": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-YrSuM/Gp2uC5anFFQoO66hCJ1tp4XYK5M12u9np5aeg=",
+        "narHash": "sha256-eiwOLP+h9KaX9Da89zaEGP5rLcAqXtdM4dMgICEOyHQ=",
         "type": "file",
-        "url": "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.23.0/docs/public/presets/toml/nerd-font-symbols.toml"
+        "url": "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.24.0/docs/public/presets/toml/nerd-font-symbols.toml"
       },
       "original": {
         "type": "file",
-        "url": "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.23.0/docs/public/presets/toml/nerd-font-symbols.toml"
+        "url": "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.24.0/docs/public/presets/toml/nerd-font-symbols.toml"
       }
     },
     "treefmt-nix": {
