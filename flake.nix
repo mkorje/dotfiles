@@ -22,6 +22,12 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     sops-nix = {
@@ -45,7 +51,7 @@
     };
 
     starship-nerd-font-symbols = {
-      url = "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.23.0/docs/public/presets/toml/nerd-font-symbols.toml";
+      url = "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.24.0/docs/public/presets/toml/nerd-font-symbols.toml";
       flake = false;
     };
 

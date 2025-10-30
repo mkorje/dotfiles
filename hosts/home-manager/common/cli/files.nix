@@ -29,7 +29,7 @@
     # PDF
     ghostscript
     pdftk
-    poppler_utils
+    poppler-utils
 
     # Cleaners
     czkawka
