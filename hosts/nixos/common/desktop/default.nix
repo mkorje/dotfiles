@@ -25,6 +25,7 @@
     "steam-unwrapped"
     "discord"
     "staruml"
+    "fxlinuxprint"
   ];
 
   environment.systemPackages = with pkgs; [
@@ -75,7 +76,14 @@
 
   services.printing = {
     enable = true;
-    drivers = [ pkgs.epson-escpr2 ];
+    drivers = with pkgs; [
+      epson-escpr2
+      fxlinuxprint
+    ];
+  };
+
+  services.samba = {
+    enable = true;
   };
 
   hardware.printers = {
@@ -91,6 +99,16 @@
           Duplex = "DuplexNoTumble";
           MediaType = "PLAIN_HIGH";
           Ink = "COLOR";
+        };
+      }
+      {
+        name = "UniPrint";
+        deviceUri = "smb://uniprint.unimelb.edu.au/UniPrint";
+        model = "fxlinuxprint.ppd.gz";
+        ppdOptions = {
+          PageSize = "A4";
+          auth-info-required = "username,password";
+          FXColorMode = "Black";
         };
       }
     ];
