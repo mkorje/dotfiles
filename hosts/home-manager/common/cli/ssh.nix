@@ -17,6 +17,7 @@ in
         controlMaster = "auto";
         controlPath = "~/.ssh/control-%r@%h:%p";
         controlPersist = "10m";
+        extraOptions."IPQoS" = "none";
       };
 
       "github.com" = {
