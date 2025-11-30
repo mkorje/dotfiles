@@ -14,6 +14,7 @@
   ];
 
   nvidia.enable = true;
+  nvidia.cuda = true;
 
   systemd.network.networks."10-wan" = {
     matchConfig.Type = "ether";
