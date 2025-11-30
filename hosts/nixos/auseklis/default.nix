@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -11,10 +11,24 @@
     ../common/desktop
 
     ../../home-manager
+
+    inputs.nixified-ai.nixosModules.comfyui
   ];
 
   nvidia.enable = true;
   nvidia.cuda = true;
+
+  environment.systemPackages = with pkgs; [
+    jan
+    lmstudio
+  ];
+  services.ollama.enable = true;
+  services.comfyui.enable = true;
+  services.open-webui.enable = false;
+  allowedUnfreePackages = [
+    "open-webui"
+    "lmstudio"
+  ];
 
   systemd.network.networks."10-wan" = {
     matchConfig.Type = "ether";

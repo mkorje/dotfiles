@@ -56,6 +56,7 @@
     };
 
     nixpkgs-frigate.url = "github:mkorje/nixpkgs/frigate-rebase";
+    nixified-ai.url = "github:nixified-ai/flake";
   };
 
   outputs =
