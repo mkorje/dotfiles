@@ -19,6 +19,7 @@
       "-f"
       "--disable"
       "MD013"
+      "MD060"
       "--"
     ];
     includes = [ "*.md" ];
