@@ -36,13 +36,7 @@ in
     allowedUnfreePackages = [
       "nvidia-x11"
     ]
-    ++ optionals (!cfg.headless) [ "nvidia-settings" ]
-    ++ optionals cfg.cuda [
-      "cuda_cudart"
-      "libcublas"
-      "cuda_cccl"
-      "cuda_nvcc"
-    ];
+    ++ optionals (!cfg.headless) [ "nvidia-settings" ];
 
     nixpkgs.config.cudaSupport = cfg.cuda;
     services.ollama.acceleration = mkIf cfg.cuda "cuda";
