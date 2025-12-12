@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 
@@ -39,6 +40,6 @@ in
     ++ optionals (!cfg.headless) [ "nvidia-settings" ];
 
     nixpkgs.config.cudaSupport = cfg.cuda;
-    services.ollama.acceleration = mkIf cfg.cuda "cuda";
+    services.ollama.package = mkIf cfg.cuda pkgs.ollama-cuda;
   };
 }
