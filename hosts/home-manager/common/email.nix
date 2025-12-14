@@ -20,8 +20,8 @@
         thunderbird.enable = true;
         university = {
           enable = true;
-          username = "kortgem";
-          aliases = [ "m.kortge" ];
+          username = "m.kortge";
+          aliases = [ "kortgem" ];
         };
       };
     };
