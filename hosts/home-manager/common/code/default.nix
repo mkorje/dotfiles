@@ -15,6 +15,11 @@
     nasm
 
     watchexec
+
+    clippy
+    rustc
+    cargo
+    rustfmt
   ];
 
   programs.direnv = {
