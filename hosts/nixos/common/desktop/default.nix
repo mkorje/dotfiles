@@ -33,7 +33,10 @@
     openrazer-daemon
     polychromatic
     pwvucontrol
+    android-file-transfer
   ];
+
+  programs.kdeconnect.enable = true;
 
   # Pipewire
   security.rtkit.enable = true;
