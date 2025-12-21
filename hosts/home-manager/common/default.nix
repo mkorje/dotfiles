@@ -70,10 +70,13 @@
     glow # markdown viewer
     pandoc
 
+    ente-auth
+    ente-cli
+    ente-desktop
+
     # anki
 
-    # not yet in nixos-unstable
-    # filen-cli
+    filen-cli
     filen-desktop
 
     simplex-chat-desktop
