@@ -56,6 +56,7 @@
       doInstallCheck = false;
     }))
     identity
+    rmlint
 
     # Fonts
     (fontforge.override {
