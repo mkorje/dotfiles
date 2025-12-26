@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   networking.wireless.iwd = {
@@ -9,6 +9,15 @@
       };
     };
   };
+
+  services.mullvad-vpn.enable = lib.mkForce false;
+  services.tailscale.enable = lib.mkForce true;
+  networking.nameservers = lib.mkForce [
+    "100.100.100.100"
+    "194.242.2.2"
+    "2a07:e340::2"
+  ];
+  networking.search = lib.mkForce [ "zebroid-wyvern.ts.net" ];
 
   sops.secrets = {
     "networking/wireless/Aether/passphrase".sopsFile = ./secrets.yaml;
@@ -43,17 +52,5 @@
     ln -sf ${config.sops.templates."Aether.psk".path} /var/lib/iwd/Aether.psk
     ln -sf ${config.sops.templates."TeamSAM.psk".path} /var/lib/iwd/TeamSAM.psk
     ln -sf ${config.sops.templates."eduroam.8021x".path} /var/lib/iwd/eduroam.8021x
-  '';
-
-  networking.nftables.ruleset = ''
-    table inet excludeTraffic {
-      chain excludeOutgoing {
-        type route hook output priority 0; policy accept;
-        ip daddr 172.16.0.0/16 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
-        # ip daddr 100.64.0.0/10 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
-        # ip6 daddr fd7a:115c:a1e0::/48 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
-        ip saddr 10.13.0.0/19 ip daddr 128.250.0.0/16 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
-      }
-    }
   '';
 }

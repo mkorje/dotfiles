@@ -8,9 +8,8 @@
   };
 
   services.tailscale = {
-    enable = true;
-    openFirewall = true;
     useRoutingFeatures = "client";
+    disableUpstreamLogging = true;
   };
 
   hardware.bluetooth.enable = true;
