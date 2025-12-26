@@ -7,14 +7,18 @@
     enableExcludeWrapper = false;
   };
 
-  hardware.bluetooth = {
+  services.tailscale = {
     enable = true;
-    powerOnBoot = true;
+    openFirewall = true;
+    useRoutingFeatures = "client";
   };
+
+  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
   environment.persistence."/persist".directories = [
     "/var/lib/bluetooth"
+    "/var/lib/tailscale"
     "/etc/mullvad-vpn"
   ];
 }

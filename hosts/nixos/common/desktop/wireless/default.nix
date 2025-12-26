@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   networking.wireless.iwd = {
@@ -44,18 +44,6 @@
     ln -sf ${config.sops.templates."TeamSAM.psk".path} /var/lib/iwd/TeamSAM.psk
     ln -sf ${config.sops.templates."eduroam.8021x".path} /var/lib/iwd/eduroam.8021x
   '';
-
-  services.tailscale = {
-    enable = false;
-    package = pkgs.tailscale.overrideAttrs { doCheck = false; };
-    openFirewall = true;
-    useRoutingFeatures = "client";
-    extraUpFlags = [ "--login-server https://tailscale.pist.is" ];
-  };
-
-  environment.persistence."/persist".directories = [
-    "/var/lib/tailscale"
-  ];
 
   networking.nftables.ruleset = ''
     table inet excludeTraffic {
