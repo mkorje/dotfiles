@@ -5,6 +5,8 @@
     ./documents.nix
   ];
 
+  allowedUnfreePackages = [ "claude-code" ];
+
   home.packages = with pkgs; [
     (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
       qemu-system-x86_64 \
@@ -13,6 +15,10 @@
     '')
     qemu
     nasm
+
+    claude-code
+    gemini-cli
+    codex
 
     watchexec
 

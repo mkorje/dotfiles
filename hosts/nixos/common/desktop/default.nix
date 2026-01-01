@@ -23,8 +23,6 @@
     "steam-original"
     "steam-run"
     "steam-unwrapped"
-    "discord"
-    "staruml"
     "fxlinuxprint"
   ];
 
