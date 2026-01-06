@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -20,13 +20,7 @@
     impermanence.url = "github:nix-community/impermanence";
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
-
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+      url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -51,7 +45,7 @@
     };
 
     starship-nerd-font-symbols = {
-      url = "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.24.0/docs/public/presets/toml/nerd-font-symbols.toml";
+      url = "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.24.2/docs/public/presets/toml/nerd-font-symbols.toml";
       flake = false;
     };
 
