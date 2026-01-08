@@ -22,6 +22,12 @@
         "image/png" = "imv.desktop";
         "image/jpeg" = "imv.desktop";
         "image/avif" = "imv.desktop";
+        "image/webp" = "imv.desktop";
+        "image/svg+xml" = "imv.desktop";
+        "image/tiff" = "imv.desktop";
+        "image/gif" = "imv.desktop";
+        "image/bmp" = "imv.desktop";
+        "image/jxl" = "imv.desktop";
 
         "video/mp4" = "mpv.desktop";
         "video/x-m4v" = "mpv.desktop";
@@ -31,6 +37,8 @@
         "application/postscript" = "org.pwmt.zathura-ps.desktop";
         "application/epub+zip" = "calibre-ebook-viewer.desktop";
 
+        "inode/directory" = "pcmanfm.desktop";
+
         "text/html" = "librewolf.desktop";
         "x-scheme-handler/http" = "librewolf.desktop";
         "x-scheme-handler/https" = "librewolf.desktop";
@@ -38,7 +46,6 @@
         "x-scheme-handler/unknown" = "librewolf.desktop";
         "text/xml" = "librewolf.desktop";
         "application/xhtml_xml" = "librewolf.desktop";
-        "image/webp" = "librewolf.desktop";
         "x-scheme-handler/ftp" = "librewolf.desktop";
       };
     };
