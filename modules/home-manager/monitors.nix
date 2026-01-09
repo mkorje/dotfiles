@@ -139,12 +139,12 @@ in
       services.hyprpaper = {
         enable = true;
         settings = {
-          ipc = "off";
+          ipc = false;
           splash = false;
-          preload = map (x: "${config.xdg.configHome}/${wallpaperTargetDir}${x.name}") wallpaperMonitors;
-          wallpaper = map (
-            x: "${x.name},${config.xdg.configHome}/${wallpaperTargetDir}${x.name}"
-          ) wallpaperMonitors;
+          wallpaper = map (x: {
+            monitor = x.name;
+            path = "${config.xdg.configHome}/${wallpaperTargetDir}${x.name}";
+          }) wallpaperMonitors;
         };
       };
     };

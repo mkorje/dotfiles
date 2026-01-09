@@ -55,9 +55,7 @@
       ];
       animation = [ "windows, 1, 3, default, popin 80%" ];
       windowrule = [
-        "float, class:^(librewolf)$, title:^(Picture-in-Picture)$"
-        "pin, class:^(librewolf)$, title:^(Picture-in-Picture)$"
-        "size 800 450, class:^(librewolf)$, title:^(Picture-in-Picture)$"
+        "match:class ^(librewolf)$, match:title ^(Picture-in-Picture)$, float on, pin on, size 800 450"
       ];
       xwayland.force_zero_scaling = true;
       misc = {
