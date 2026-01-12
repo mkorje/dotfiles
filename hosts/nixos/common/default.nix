@@ -15,27 +15,12 @@
 
   boot = {
     initrd.systemd.enable = true;
-    enableContainers = false;
     loader.grub.enable = false;
   };
 
-  system = {
-    etc.overlay.enable = true;
-    tools.nixos-generate-config.enable = false;
-  };
+  system.etc.overlay.enable = true;
 
-  environment = {
-    defaultPackages = [ ];
-    stub-ld.enable = false;
-  };
-
-  programs.command-not-found.enable = false;
-
-  documentation = {
-    info.enable = false;
-    nixos.enable = false;
-  };
-
+  environment.defaultPackages = [ ];
   environment.systemPackages = [
     pkgs.git
     pkgs.cifs-utils

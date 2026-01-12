@@ -13,10 +13,7 @@
   ];
 
   nix.daemonCPUSchedPolicy = "idle";
-
-  virtualisation.docker = {
-    enable = false;
-  };
+  nix.daemonIOSchedClass = "idle";
 
   allowedUnfreePackages = [
     "steam"
@@ -36,15 +33,6 @@
 
   programs.kdeconnect.enable = true;
 
-  # Pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
   programs.steam.enable = true;
 
   sops.secrets = {
@@ -55,7 +43,6 @@
   };
 
   programs.fish.enable = true;
-  documentation.man.generateCaches = false;
 
   users = {
     users."mkorje" = {
@@ -68,7 +55,6 @@
         "openrazer"
         "scanner"
         "lp"
-        "docker"
       ];
       hashedPasswordFile = config.sops.secrets."users/mkorje/hashedPassword".path;
     };
@@ -120,8 +106,6 @@
 
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
-
-  services.libinput.enable = true;
 
   services.udisks2.enable = true;
 }

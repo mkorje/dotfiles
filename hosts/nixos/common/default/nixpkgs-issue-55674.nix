@@ -30,7 +30,6 @@ in
         pkg:
         (builtins.elem (lib.getName pkg) allUnfreePackages)
         || (config.nvidia.cuda && (pkgs._cuda.lib.allowUnfreeCudaPredicate pkg));
-
     }
 
     (lib.optionalAttrs hasHomeManager {

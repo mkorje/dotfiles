@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [
@@ -12,7 +12,6 @@
   home.packages = with pkgs; [
     grim
     slurp
-    # xdg-utils
   ];
 
   catppuccin = {
@@ -28,7 +27,6 @@
   # TODO: https://github.com/Linus789/wl-clip-persist
   services.cliphist.enable = true;
 
-  xdg.configFile."uwsm/env".text = ''
-    export NIXOS_OZONE_WL=1
-  '';
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 }

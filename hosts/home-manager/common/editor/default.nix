@@ -27,7 +27,7 @@
       lldb
       marksman
       nil
-      nixfmt-rfc-style
+      nixfmt
       nodePackages_latest.vscode-json-languageserver
       rust-analyzer
       swi-prolog
