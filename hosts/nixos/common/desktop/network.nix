@@ -8,6 +8,7 @@
   };
 
   services.tailscale = {
+    enable = true;
     useRoutingFeatures = "client";
     disableUpstreamLogging = true;
   };
