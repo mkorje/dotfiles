@@ -30,6 +30,7 @@
     ghostscript
     pdftk
     poppler-utils
+    verapdf
 
     # Cleaners
     (pkgs.czkawka.overrideAttrs (_: rec {

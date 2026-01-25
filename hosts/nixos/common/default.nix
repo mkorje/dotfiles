@@ -67,4 +67,6 @@
       }
     ];
   };
+
+  # services.clamav
 }

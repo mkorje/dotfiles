@@ -92,5 +92,7 @@
     pastel
 
     hexyl
+
+    tldr
   ];
 }
