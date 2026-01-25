@@ -1,10 +1,17 @@
+{ modulesPath, ... }:
+
 {
+  imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
+  ];
+
   boot.initrd.availableKernelModules = [
-    "ata_piix"
-    "uhci_hcd"
+    "ahci"
+    "xhci_pci"
     "virtio_pci"
+    "virtio_scsi"
+    "sd_mod"
     "sr_mod"
-    "virtio_blk"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
@@ -16,7 +23,7 @@
     options = [
       "subvol=root"
       "noatime"
-      "compress-force=zstd:2"
+      "compress-force=zstd:1"
     ];
   };
 
@@ -26,7 +33,7 @@
     options = [
       "subvol=nix"
       "noatime"
-      "compress-force=zstd:2"
+      "compress-force=zstd:1"
     ];
   };
 
@@ -37,7 +44,7 @@
     options = [
       "subvol=persist"
       "noatime"
-      "compress-force=zstd:2"
+      "compress-force=zstd:1"
     ];
   };
 
@@ -47,17 +54,13 @@
     options = [ "subvol=swap" ];
   };
 
-  fileSystems."/var/lib/headscale" = {
-    device = "/dev/disk/by-label/nixos";
-    fsType = "btrfs";
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/boot";
+    fsType = "vfat";
     options = [
-      "subvol=headscale"
-      "noatime"
-      "compress-force=zstd:2"
+      "umask=0077"
     ];
   };
 
   swapDevices = [ { device = "/swap/swapfile"; } ];
-
-  virtualisation.hypervGuest.enable = true;
 }

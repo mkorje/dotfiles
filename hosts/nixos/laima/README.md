@@ -1,4 +1,4 @@
-# hermes
+# laima
 
 ## System Information
 
@@ -21,9 +21,9 @@ sudo -i
 Run the install script and follow the instructions.
 
 ```bash
-$ source <(curl -s https://raw.githubusercontent.com/mkorje/dotfiles/refs/heads/main/hosts/nixos/hermes/install.sh)
+$ source <(curl -s https://raw.githubusercontent.com/mkorje/dotfiles/refs/heads/main/hosts/nixos/laima/install.sh)
 Public key: age10x8y3u64h0z8reh2s4279wmu8sksv6l3vndv0a07449c2wl6tstqt5jplp
-Add this public key to sops as lietuvens. When done, press enter to continue.
+Add this public key to sops as laima. When done, press enter to continue.
 ```
 
 Then reboot the machine.

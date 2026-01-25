@@ -4,7 +4,7 @@ keys:
   - &auseklis age16p72a8z59uxryp46y0t453vttv7xpmmfc2ny3fewxjze0zhlzvaq48m84n
   - &aizsaule age1yenprnzcw6gq4tk4tf5ays90nt6d77l9u76m7hsudh4t5vln75qsn00q5n
   - &meness age1t4lq2fhecgkehujgm4f830j2s5tuh6zugwysged5udkhy6lqp9nqnduyu8
-  - &hermes age1n8v4dhznjfva2p9rxs95j2hflhnlz0jzczfm3jgv4q4tfcvy0y6s23ttj7
+  - &laima age1acxh08yunyx8pj9v4t9ewded7u05kj5qa534g9pxs27wpyzd092s3ke7s5
 creation_rules:
   - path_regex: nixos/meness/secrets\.yaml$
     key_groups:
@@ -12,12 +12,12 @@ creation_rules:
           - *nixos-a
           - *nixos-b
           - *meness
-  - path_regex: nixos/hermes/secrets\.yaml$
+  - path_regex: nixos/laima/secrets\.yaml$
     key_groups:
       - age:
           - *nixos-a
           - *nixos-b
-          - *hermes
+          - *laima
   - path_regex: nixos/common/desktop/secrets\.yaml$
     key_groups:
       - age:

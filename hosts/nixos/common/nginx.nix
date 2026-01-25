@@ -3,7 +3,7 @@
 {
   services.nginx = {
     enable = true;
-    package = pkgs.nginxQuic;
+    package = pkgs.nginxMainline;
 
     recommendedOptimisation = true;
     recommendedGzipSettings = true;

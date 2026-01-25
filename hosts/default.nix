@@ -41,4 +41,10 @@ in
     domain = "pist.is";
     stable = true;
   };
+
+  laima = mkSystem {
+    hostName = "laima";
+    domain = "elp.is";
+    stable = true;
+  };
 }
