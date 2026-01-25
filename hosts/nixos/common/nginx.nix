@@ -19,7 +19,7 @@
 
     appendHttpConfig = ''
       map $scheme $hsts_header {
-        https "max-age=31536000; includeSubdomains; preload";
+        https "max-age=63072000; includeSubdomains; preload";
       }
       add_header Strict-Transport-Security $hsts_header always;
       add_header Content-Security-Policy "default-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; trusted-types 'none'; require-trusted-types-for 'script'" always;
