@@ -1,6 +1,10 @@
 { pkgs, inputs, ... }:
 
 {
+  home.packages = with pkgs; [
+    gnome-text-editor
+  ];
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
