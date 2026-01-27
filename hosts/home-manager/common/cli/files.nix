@@ -32,6 +32,8 @@
     poppler-utils
     verapdf
 
+    diffoscope
+
     # Cleaners
     (pkgs.czkawka.overrideAttrs (_: rec {
       version = "unstable-2025-12-03";
