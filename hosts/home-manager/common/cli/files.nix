@@ -21,6 +21,7 @@
     nodePackages_latest.svgo
     # mozjpeg
     scour
+    libjxl
 
     # Videos
     ffmpeg
