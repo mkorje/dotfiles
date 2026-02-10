@@ -20,6 +20,8 @@
 
   system.etc.overlay.enable = true;
 
+  documentation.man.generateCaches = false;
+
   environment.defaultPackages = [ ];
   environment.systemPackages = [
     pkgs.git
