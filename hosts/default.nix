@@ -27,6 +27,11 @@ let
         {
           networking = { inherit hostName domain; };
           nixpkgs.hostPlatform = system;
+          nixpkgs.overlays = [
+            inputs.claude-code.overlays.default
+            inputs.codex-cli.overlays.default
+            inputs.gemini-cli.overlays.default
+          ];
         }
       ];
     };

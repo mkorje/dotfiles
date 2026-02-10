@@ -17,7 +17,7 @@
     nasm
 
     claude-code
-    gemini-cli
+    (gemini-cli.override { disableTelemetry = true; })
     codex
 
     watchexec
