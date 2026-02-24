@@ -67,10 +67,9 @@
       epson-escpr2
       fxlinuxprint
     ];
-  };
-
-  services.samba = {
-    enable = true;
+    clientConf = ''
+      User kortgem@unimelb.edu.au
+    '';
   };
 
   hardware.printers = {
@@ -89,13 +88,14 @@
         };
       }
       {
+        # lp -d UniPrint main.pdf
         name = "UniPrint";
-        deviceUri = "smb://uniprint.unimelb.edu.au/UniPrint";
-        model = "fxlinuxprint.ppd.gz";
+        description = "UniPrint";
+        deviceUri = "ipps://print.ipa.unimelb.edu.au:631/printers/UniPrint";
+        model = "raw";
         ppdOptions = {
-          PageSize = "A4";
-          auth-info-required = "username,password";
-          FXColorMode = "Black";
+          printer-is-shared = "false";
+          Duplex = "DuplexNoTumble";
         };
       }
     ];
