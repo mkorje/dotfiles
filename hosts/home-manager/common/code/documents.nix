@@ -11,6 +11,11 @@
     libreoffice-fresh
     pkgs-stable.calibre
 
+    orca
+    kdePackages.okular
+    evince
+    papers
+
     # dictionaries
     hunspell
     hunspellDicts.en_AU
