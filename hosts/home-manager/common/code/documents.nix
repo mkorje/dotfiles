@@ -11,7 +11,6 @@
     libreoffice-fresh
     pkgs-stable.calibre
 
-    orca
     kdePackages.okular
     evince
     papers
