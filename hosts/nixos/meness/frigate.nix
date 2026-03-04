@@ -8,7 +8,7 @@
 
 let
   pkgs-frigate = import inputs.nixpkgs-frigate {
-    inherit (pkgs) system;
+    inherit (pkgs.stdenv.hostPlatform) system;
   };
 in
 {

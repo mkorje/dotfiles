@@ -19,7 +19,7 @@
         };
       };
     };
-    package = inputs.helix.packages.${pkgs.system}.default;
+    package = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.default;
     extraPackages = with pkgs; [
       bash-language-server
       clang-tools
