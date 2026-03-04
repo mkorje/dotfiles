@@ -6,6 +6,7 @@
     xplr.enable = true;
     yazi = {
       enable = true;
+      shellWrapperName = "yy";
     };
     joshuto.enable = true;
     broot = {
