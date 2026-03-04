@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, options, ... }:
 
 {
   imports = [
@@ -20,7 +20,11 @@
 
   system.etc.overlay.enable = true;
 
-  documentation.man.generateCaches = false;
+  documentation.man =
+    if options.documentation.man ? cache then
+      { cache.enable = false; }
+    else
+      { generateCaches = false; };
 
   environment.defaultPackages = [ ];
   environment.systemPackages = [
