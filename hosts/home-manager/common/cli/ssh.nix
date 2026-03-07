@@ -45,6 +45,13 @@ in
         identityFile = gitIdentityFile;
       };
 
+      "spartan" = {
+        user = "kortgem";
+        hostname = "spartan.hpc.unimelb.edu.au";
+        proxyCommand = "uni-connect %h %p";
+        extraOptions.controlPersist = "no";
+      };
+
       # "comp30023" = {
       #   user = "mkortge";
       #   hostname = "172.26.133.239";
