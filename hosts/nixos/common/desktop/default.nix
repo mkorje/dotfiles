@@ -61,6 +61,20 @@
     groups."mkorje" = { };
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+
+  # scanimage -d "airscan:e0:EPSON ET-3800 Series" --resolution 600 -o FILE.pdf
+  hardware.sane = {
+    enable = true;
+    extraBackends = [
+      pkgs.sane-airscan
+    ];
+    disabledDefaultBackends = [ "escl" ];
+  };
+
   services.printing = {
     enable = true;
     drivers = with pkgs; [
@@ -104,7 +118,11 @@
 
   hardware.openrazer.enable = true;
 
-  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udev.packages = [
+    pkgs.yubikey-personalization
+    pkgs.sane-airscan
+  ];
+
   services.pcscd.enable = true;
 
   services.udisks2.enable = true;
