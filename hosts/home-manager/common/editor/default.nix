@@ -32,7 +32,7 @@
       marksman
       nil
       nixfmt
-      nodePackages_latest.vscode-json-languageserver
+      vscode-json-languageserver
       rust-analyzer
       swi-prolog
       taplo
