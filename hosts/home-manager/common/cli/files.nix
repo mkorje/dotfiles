@@ -18,7 +18,7 @@
     oxipng
     jpegoptim
     libwebp
-    nodePackages_latest.svgo
+    svgo
     # mozjpeg
     scour
     libjxl
