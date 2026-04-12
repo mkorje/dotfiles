@@ -7,6 +7,8 @@
 
     texliveFull
 
+    hieroglyphic
+
     xournalpp
     libreoffice-fresh
     pkgs-stable.calibre
