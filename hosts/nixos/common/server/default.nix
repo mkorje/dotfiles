@@ -19,4 +19,12 @@
       "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIL7Bw28cFjA5JWcwBEA/LT4ILIA0HikwTic+7agOAkhnAAAACXNzaDpuaXhvcw== ssh:nixos"
     ];
   };
+
+  system.autoUpgrade = {
+    allowReboot = true;
+    rebootWindow = {
+      lower = "09:00";
+      upper = "12:00";
+    };
+  };
 }
