@@ -26,7 +26,12 @@ in
 
   environment.persistence."/persist".directories = [
     rootDir
-    home
+    {
+      directory = home;
+      inherit user;
+      group = user;
+      mode = "0755";
+    }
   ];
 
   systemd.tmpfiles.rules = [
