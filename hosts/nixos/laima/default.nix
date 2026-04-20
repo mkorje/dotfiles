@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware.nix
+    ./website.nix
     ../common
     ../common/server
     ../common/nginx.nix
@@ -30,30 +31,6 @@
         GatewayOnLink = true;
       }
     ];
-  };
-
-  services.nginx.virtualHosts."mkor.je" = {
-    default = true;
-    onlySSL = true;
-    useACMEHost = "mkor.je";
-    quic = true;
-    kTLS = true;
-    listenAddresses = [
-      "5.223.68.149"
-      "[2a01:4ff:2f0:393b::1]"
-    ];
-    locations."/" = {
-      return = "200 '<html><body>It works</body></html>'";
-      extraConfig = ''
-        default_type text/html;
-      '';
-    };
-    locations."/robots.txt" = {
-      extraConfig = ''
-        rewrite ^/(.*)  $1;
-        return 200 "User-agent: *\nDisallow: /";
-      '';
-    };
   };
 
   security.acme.certs = {
