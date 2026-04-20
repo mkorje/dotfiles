@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 
 let
   user = "website-mkor-je";
@@ -142,6 +147,7 @@ in
 
   services.webhook = {
     enable = true;
+    package = pkgs-unstable.webhook;
     ip = "127.0.0.1";
     hooksTemplated.deploy = ''
       {
