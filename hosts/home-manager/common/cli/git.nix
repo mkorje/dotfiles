@@ -8,13 +8,13 @@
 
     signing = {
       key = "~/.ssh/id_ed25519_sk_rk_git-sign.pub";
+      format = "ssh";
       signByDefault = true;
     };
     settings = {
       user.email = "max@mkor.je";
       user.name = "mkorje";
       init.defaultBranch = "main";
-      gpg.format = "ssh";
       push.autoSetupRemote = true;
       log.date = "iso";
     };

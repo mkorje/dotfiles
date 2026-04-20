@@ -57,6 +57,7 @@
       publicShare = null;
       templates = null;
       videos = null;
+      setSessionVariables = true;
     };
   };
 }
