@@ -35,7 +35,7 @@ in
   ];
 
   systemd.tmpfiles.rules = [
-    "d ${rootDir} 0755 root ${user} -"
+    "d ${rootDir} 0775 root ${user} -"
     "d ${triggerDir} 0755 ${config.services.webhook.user} ${config.services.webhook.group} -"
   ];
 
