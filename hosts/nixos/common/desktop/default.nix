@@ -108,7 +108,6 @@
         deviceUri = "ipps://print.ipa.unimelb.edu.au:631/printers/UniPrint";
         model = "raw";
         ppdOptions = {
-          printer-is-shared = "false";
           Duplex = "DuplexNoTumble";
         };
       }
