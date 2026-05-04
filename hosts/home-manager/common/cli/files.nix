@@ -33,7 +33,7 @@
     poppler-utils
     verapdf
 
-    diffoscope
+    # diffoscope
 
     # Cleaners
     czkawka
