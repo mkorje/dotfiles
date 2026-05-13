@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     wget
-    rsync
 
     # Archives
     zip

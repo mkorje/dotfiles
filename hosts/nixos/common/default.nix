@@ -31,6 +31,7 @@
     pkgs.git
     pkgs.cifs-utils
     pkgs.killall
+    pkgs.rsync
   ];
 
   services.timesyncd.enable = true;
