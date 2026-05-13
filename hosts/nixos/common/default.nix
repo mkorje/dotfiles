@@ -32,6 +32,7 @@
     pkgs.cifs-utils
     pkgs.killall
     pkgs.rsync
+    pkgs.tmux
   ];
 
   services.timesyncd.enable = true;
