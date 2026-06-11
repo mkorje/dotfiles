@@ -39,11 +39,6 @@
       flake = false;
     };
 
-    starship-nerd-font-symbols = {
-      url = "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.24.2/docs/public/presets/toml/nerd-font-symbols.toml";
-      flake = false;
-    };
-
     nixpkgs-frigate.url = "github:mkorje/nixpkgs/frigate-rebase";
 
     claude-code.url = "github:sadjow/claude-code-nix";

@@ -433,7 +433,6 @@
         "nixpkgs-frigate": "nixpkgs-frigate",
         "nixpkgs-stable": "nixpkgs-stable",
         "sops-nix": "sops-nix",
-        "starship-nerd-font-symbols": "starship-nerd-font-symbols",
         "treefmt-nix": "treefmt-nix",
         "wallpapers": "wallpapers"
       }
@@ -477,18 +476,6 @@
         "owner": "Mic92",
         "repo": "sops-nix",
         "type": "github"
-      }
-    },
-    "starship-nerd-font-symbols": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-P/q2q/Uiq185scQRkPCBz0HMEnrM+h1LDtxHbsu8J3A=",
-        "type": "file",
-        "url": "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.24.2/docs/public/presets/toml/nerd-font-symbols.toml"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://raw.githubusercontent.com/starship/starship/refs/tags/v1.24.2/docs/public/presets/toml/nerd-font-symbols.toml"
       }
     },
     "systems": {
