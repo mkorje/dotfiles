@@ -66,7 +66,7 @@
     #electrum-ltc
     qbittorrent
     signal-desktop
-    bitwarden-desktop
+    # bitwarden-desktop
     bitwarden-cli
     rclone
     glow # markdown viewer
