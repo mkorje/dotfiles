@@ -16,9 +16,8 @@
     qemu
     nasm
 
-    claude-code
-    (gemini-cli.override { disableTelemetry = true; })
-    codex
+    (pkgs.llm-agents.claude-code.override { disableTelemetry = true; })
+    pkgs.llm-agents.codex
 
     watchexec
 
