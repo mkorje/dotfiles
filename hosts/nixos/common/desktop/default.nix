@@ -78,7 +78,6 @@
   services.printing = {
     enable = true;
     drivers = with pkgs; [
-      epson-escpr2
       fxlinuxprint
     ];
     clientConf = ''
@@ -93,12 +92,13 @@
         description = "EPSON ET-3800 Series";
         location = "Home";
         deviceUri = "ipps://172.18.1.38/ipp/print";
-        model = "epson-inkjet-printer-escpr2/Epson-ET-3800_Series-epson-escpr2-en.ppd";
+        model = "everywhere";
         ppdOptions = {
           PageSize = "A4";
+          MediaType = "Stationery";
+          cupsPrintQuality = "High";
+          ColorModel = "RGB";
           Duplex = "DuplexNoTumble";
-          MediaType = "PLAIN_HIGH";
-          Ink = "COLOR";
         };
       }
       {
