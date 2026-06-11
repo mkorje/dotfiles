@@ -45,7 +45,6 @@
     };
 
     nixpkgs-frigate.url = "github:mkorje/nixpkgs/frigate-rebase";
-    nixified-ai.url = "github:nixified-ai/flake";
 
     claude-code.url = "github:sadjow/claude-code-nix";
     codex-cli.url = "github:sadjow/codex-cli-nix";

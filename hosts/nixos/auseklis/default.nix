@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -11,8 +11,6 @@
     ../common/desktop
 
     ../../home-manager
-
-    inputs.nixified-ai.nixosModules.comfyui
   ];
 
   nvidia.enable = true;
@@ -23,7 +21,6 @@
     lmstudio
   ];
   services.ollama.enable = true;
-  services.comfyui.enable = true;
   services.open-webui.enable = false;
   allowedUnfreePackages = [
     "open-webui"
