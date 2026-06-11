@@ -34,11 +34,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix = {
-      url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     wallpapers = {
       url = "github:mkorje/wallpapers";
       flake = false;

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -19,7 +19,6 @@
         };
       };
     };
-    package = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.default;
     extraPackages = with pkgs; [
       bash-language-server
       clang-tools
