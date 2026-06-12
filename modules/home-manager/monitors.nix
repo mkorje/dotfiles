@@ -4,9 +4,18 @@
   ...
 }:
 
-with lib;
-
 let
+  inherit (lib)
+    mkOption
+    mkIf
+    types
+    filter
+    length
+    foldl'
+    strings
+    filesystem
+    generators
+    ;
   cfg = config.desktop;
 
   wallpaperSupportedFormats = [
@@ -27,54 +36,52 @@ in
             name = mkOption {
               type = types.str;
               example = "DP-1";
-              description = "";
+              description = "Connector name of the monitor (as reported by the compositor).";
             };
             primary = mkOption {
               type = types.bool;
               default = false;
               example = true;
-              description = "";
+              description = "Whether this is the primary monitor. Exactly one enabled monitor must be primary.";
             };
             width = mkOption {
               type = types.int;
               example = 1920;
-              description = "";
+              description = "Horizontal resolution in pixels.";
             };
             height = mkOption {
               type = types.int;
               example = 1080;
-              description = "";
+              description = "Vertical resolution in pixels.";
             };
             refreshRate = mkOption {
               type = types.int;
               example = 60;
-              description = "";
+              description = "Refresh rate in Hz.";
             };
             x = mkOption {
               type = types.int;
               default = 0;
               example = -1920;
-              description = "";
+              description = "Horizontal position of the monitor's top-left corner in the layout.";
             };
             y = mkOption {
               type = types.int;
               default = 0;
               example = -1080;
-              description = "";
+              description = "Vertical position of the monitor's top-left corner in the layout.";
             };
             scale = mkOption {
               type = types.float;
               default = 1.0;
               example = 1.5;
-              description = ''
-                monitor scaling
-              '';
+              description = "Monitor scaling factor.";
             };
             enabled = mkOption {
               type = types.bool;
               default = true;
               example = false;
-              description = "";
+              description = "Whether to configure and enable this monitor.";
             };
             wallpaper = mkOption {
               type = types.nullOr (
@@ -87,17 +94,13 @@ in
                 }
               );
               default = null;
-              description = ''
-                path to wallpaper file
-              '';
+              description = "Path to a wallpaper file for this monitor.";
             };
           };
         }
       );
       default = [ ];
-      description = ''
-        list of monitors to configure
-      '';
+      description = "List of monitors to configure.";
     };
   };
 
@@ -154,9 +157,12 @@ in
         };
       };
 
-      xdg.configFile = foldl' (
-        a: x: a // { "${wallpaperTargetDir}${x.name}".source = x.wallpaper; }
-      ) { } wallpaperMonitors;
+      xdg.configFile = builtins.listToAttrs (
+        map (x: {
+          name = "${wallpaperTargetDir}${x.name}";
+          value.source = x.wallpaper;
+        }) wallpaperMonitors
+      );
 
       services.hyprpaper = {
         enable = true;

@@ -1,7 +1,13 @@
 { lib, ... }:
 
-with lib;
-
+let
+  inherit (lib)
+    mkOption
+    mkEnableOption
+    mkIf
+    types
+    ;
+in
 {
   options = {
     accounts.email.accounts = mkOption {
@@ -30,7 +36,7 @@ with lib;
                 type = types.str;
               };
               aliases = mkOption {
-                type = with types; listOf str;
+                type = types.listOf types.str;
                 default = [ ];
               };
             };

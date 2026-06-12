@@ -5,9 +5,14 @@
   ...
 }:
 
-with lib;
-
 let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    optionals
+    ;
   cfg = config.nvidia;
 in
 {
