@@ -117,19 +117,41 @@ in
 
       wayland.windowManager.hyprland.settings = {
         monitor =
-          (map (
-            x:
-            "${x.name},${toString x.width}x${toString x.height}@${toString x.refreshRate},${toString x.x}x${toString x.y},${toString x.scale}"
-          ) enabledMonitors)
+          (map (x: {
+            output = x.name;
+            mode = "${toString x.width}x${toString x.height}@${toString x.refreshRate}";
+            position = "${toString x.x}x${toString x.y}";
+            inherit (x) scale;
+          }) enabledMonitors)
           ++ [
-            ",preferred,auto,1"
-            "Unknown-1,disable"
+            {
+              output = "";
+              mode = "preferred";
+              position = "auto";
+              scale = 1;
+            }
+            {
+              output = "Unknown-1";
+              disabled = true;
+            }
           ];
-        workspace = mkIf ((length enabledMonitors) != 0) (map (x: "1,monitor:${x.name}") primaryMonitors);
-        exec-once = [
-          "[workspace 9 silent] uwsm-app -- mullvad-vpn"
-          "hyprctl dispatch workspace 1"
-        ];
+        workspace_rule = mkIf ((length enabledMonitors) != 0) (
+          map (x: {
+            workspace = "1";
+            monitor = x.name;
+          }) primaryMonitors
+        );
+        on = {
+          _args = [
+            "hyprland.start"
+            (generators.mkLuaInline ''
+              function()
+                hl.exec_cmd("uwsm-app -- mullvad-vpn", { workspace = 9, silent = true })
+                hl.dispatch(hl.dsp.focus({ workspace = 1 }))
+              end
+            '')
+          ];
+        };
       };
 
       xdg.configFile = foldl' (
