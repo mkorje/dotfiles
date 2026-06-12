@@ -10,69 +10,66 @@ in
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
-      "*" = {
-        addKeysToAgent = "no";
-        compression = true;
-        controlMaster = "auto";
-        controlPath = "~/.ssh/control-%r@%h:%p";
-        controlPersist = "10m";
-        extraOptions."IPQoS" = "none";
-      };
-
+    settings = {
       "github.com" = {
-        user = "git";
-        identityFile = gitIdentityFile;
+        User = "git";
+        IdentityFile = gitIdentityFile;
       };
 
       "codeberg.org" = {
-        user = "git";
-        identityFile = gitIdentityFile;
+        User = "git";
+        IdentityFile = gitIdentityFile;
       };
 
       "git.sr.ht" = {
-        user = "git";
-        identityFile = gitIdentityFile;
+        User = "git";
+        IdentityFile = gitIdentityFile;
       };
 
       "gitlab.com" = {
-        user = "git";
-        identityFile = gitIdentityFile;
+        User = "git";
+        IdentityFile = gitIdentityFile;
       };
 
       "swen20003.eng.unimelb.edu.au" = {
-        user = "git";
-        identityFile = gitIdentityFile;
+        User = "git";
+        IdentityFile = gitIdentityFile;
       };
 
       "spartan" = {
-        user = "kortgem";
-        hostname = "spartan.hpc.unimelb.edu.au";
-        proxyCommand = "uni-connect %h %p";
-        extraOptions.controlPersist = "no";
+        User = "kortgem";
+        HostName = "spartan.hpc.unimelb.edu.au";
+        ProxyCommand = "uni-connect %h %p";
+        ControlPersist = "no";
       };
 
       # "comp30023" = {
-      #   user = "mkortge";
-      #   hostname = "172.26.133.239";
-      #   proxyCommand = "uni-connect %h %p";
-      #   extraOptions.controlPersist = "no";
+      #   User = "mkortge";
+      #   HostName = "172.26.133.239";
+      #   ProxyCommand = "uni-connect %h %p";
+      #   ControlPersist = "no";
       # };
 
       "meness" = {
-        user = "admin";
-        hostname = "172.16.1.100";
-        identityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
+        User = "admin";
+        HostName = "172.16.1.100";
+        IdentityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
       };
 
       "hermes" = {
-        user = "admin";
-        hostname = "139.84.200.35";
-        identityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
+        User = "admin";
+        HostName = "139.84.200.35";
+        IdentityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
       };
 
       "*" = {
-        identitiesOnly = true;
+        AddKeysToAgent = "no";
+        Compression = true;
+        ControlMaster = "auto";
+        ControlPath = "~/.ssh/control-%r@%h:%p";
+        ControlPersist = "10m";
+        IPQoS = "none";
+        IdentitiesOnly = true;
       };
     };
   };
