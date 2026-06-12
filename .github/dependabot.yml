@@ -8,4 +8,4 @@ updates:
       - "automated"
       - "dependencies"
     commit-message:
-      prefix: "build(actions)"
+      prefix: "ci"

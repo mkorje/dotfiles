@@ -23,9 +23,9 @@ jobs:
         id: update
         with:
           token: ${{ secrets.MKORJE_BOT_GH_TOKEN }}
-          commit-msg: "build(flake): update flake.lock"
+          commit-msg: "flake: update flake.lock"
           branch: update-flake-lock
-          pr-title: "build(flake): update flake.lock"
+          pr-title: "flake: update flake.lock"
           pr-body: |
             Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.
 
