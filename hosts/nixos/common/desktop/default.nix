@@ -12,6 +12,13 @@
     ./wayland.nix
   ];
 
+  catppuccin = {
+    autoEnable = true;
+    enable = true;
+    accent = "mauve";
+    flavor = "mocha";
+  };
+
   nix.daemonCPUSchedPolicy = "idle";
   nix.daemonIOSchedClass = "idle";
 

@@ -32,6 +32,13 @@
 
   programs.home-manager.enable = true;
 
+  catppuccin = {
+    autoEnable = true;
+    enable = true;
+    accent = "mauve";
+    flavor = "mocha";
+  };
+
   fonts.fontconfig.enable = true;
 
   services.udiskie = {

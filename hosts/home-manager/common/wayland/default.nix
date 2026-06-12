@@ -14,12 +14,6 @@
     slurp
   ];
 
-  catppuccin = {
-    enable = true;
-    accent = "mauve";
-    flavor = "mocha";
-  };
-
   # Notification daemon
   services.mako.enable = true;
 
