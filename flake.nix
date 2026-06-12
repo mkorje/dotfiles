@@ -39,8 +39,6 @@
       flake = false;
     };
 
-    nixpkgs-frigate.url = "github:mkorje/nixpkgs/frigate-rebase";
-
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";

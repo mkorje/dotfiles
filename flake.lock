@@ -296,22 +296,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-frigate": {
-      "locked": {
-        "lastModified": 1758374880,
-        "narHash": "sha256-OlrYljlPXa5ITwjl2GoH2XZ4Ii8yLTnHc+3Br2Rhy0Q=",
-        "owner": "mkorje",
-        "repo": "nixpkgs",
-        "rev": "08252d9fde6dd0a214381511178c3d0da07c3cda",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mkorje",
-        "ref": "frigate-rebase",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1780902259,
@@ -389,7 +373,6 @@
         "llm-agents": "llm-agents",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-frigate": "nixpkgs-frigate",
         "nixpkgs-stable": "nixpkgs-stable",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix_2",
