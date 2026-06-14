@@ -15,6 +15,14 @@
         else
           set -f drv $argv[1]
         end
+
+        set -f target_host (cat $drv/etc/hostname 2>/dev/null)
+        set -f current_host (hostname)
+        if test -n "$target_host"; and test "$target_host" != "$current_host"
+          echo "nixos-switch: refusing to activate config for '$target_host' on host '$current_host'." >&2
+          return 1
+        end
+
         doas nix-env -p /nix/var/nix/profiles/system --set $drv
         doas $drv/bin/switch-to-configuration switch
       '';
