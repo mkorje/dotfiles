@@ -5,6 +5,40 @@
   ...
 }:
 
+let
+  inherit (lib)
+    mapAttrs
+    mapAttrs'
+    mapAttrsToList
+    nameValuePair
+    concatMapAttrs
+    toUpper
+    ;
+
+  cameras = {
+    front = {
+      ip = "172.19.0.110";
+      subSubtype = 2;
+    };
+    back = {
+      ip = "172.19.0.120";
+      subSubtype = 2;
+    };
+    door = {
+      ip = "172.19.0.130";
+      subSubtype = 1;
+    };
+    side = {
+      ip = "172.19.0.140";
+      subSubtype = 1;
+    };
+  };
+
+  passwordEnv = name: "${toUpper name}_PASSWORD";
+  mkRtsp =
+    ip: name: subtype:
+    "rtsp://stream:\${${passwordEnv name}}@${ip}/cam/realmonitor?channel=1&subtype=${toString subtype}";
+in
 {
   services.frigate.enable = true;
   services.frigate.hostname = "frigate.pist.is";
@@ -94,16 +128,10 @@
     detections.retain.days = 10;
   };
 
-  services.frigate.settings.go2rtc.streams = {
-    front = [ ];
-    back = [ ];
-    door = [ ];
-    side = [ ];
-    front_sub = [ ];
-    back_sub = [ ];
-    door_sub = [ ];
-    side_sub = [ ];
-  };
+  services.frigate.settings.go2rtc.streams = concatMapAttrs (name: _: {
+    ${name} = [ ];
+    "${name}_sub" = [ ];
+  }) cameras;
 
   services.frigate.settings.camera_groups = {
     Front = {
@@ -126,95 +154,34 @@
     };
   };
 
-  services.frigate.settings.cameras.front = {
-    webui_url = "http://172.19.0.110";
+  services.frigate.settings.cameras = mapAttrs (name: cam: {
+    webui_url = "http://${cam.ip}";
     ffmpeg.inputs = [
       {
-        path = "rtsp://127.0.0.1:8554/front";
+        path = "rtsp://127.0.0.1:8554/${name}";
         roles = [ "record" ];
       }
       {
-        path = "rtsp://127.0.0.1:8554/front_sub";
+        path = "rtsp://127.0.0.1:8554/${name}_sub";
         roles = [
           "audio"
           "detect"
         ];
       }
     ];
-  };
-
-  services.frigate.settings.cameras.back = {
-    webui_url = "http://172.19.0.120";
-    ffmpeg.inputs = [
-      {
-        path = "rtsp://127.0.0.1:8554/back";
-        roles = [ "record" ];
-      }
-      {
-        path = "rtsp://127.0.0.1:8554/back_sub";
-        roles = [
-          "audio"
-          "detect"
-        ];
-      }
-    ];
-  };
-
-  services.frigate.settings.cameras.door = {
-    webui_url = "http://172.19.0.130";
-    ffmpeg.inputs = [
-      {
-        path = "rtsp://127.0.0.1:8554/door";
-        roles = [ "record" ];
-      }
-      {
-        path = "rtsp://127.0.0.1:8554/door_sub";
-        roles = [
-          "audio"
-          "detect"
-        ];
-      }
-    ];
-  };
-
-  services.frigate.settings.cameras.side = {
-    webui_url = "http://172.19.0.140";
-    ffmpeg.inputs = [
-      {
-        path = "rtsp://127.0.0.1:8554/side";
-        roles = [ "record" ];
-      }
-      {
-        path = "rtsp://127.0.0.1:8554/side_sub";
-        roles = [
-          "audio"
-          "detect"
-        ];
-      }
-    ];
-  };
+  }) cameras;
 
   services.go2rtc.enable = true;
-  services.go2rtc.settings.streams = {
-    front = "rtsp://stream:\${FRONT_PASSWORD}@172.19.0.110/cam/realmonitor?channel=1&subtype=0";
-    back = "rtsp://stream:\${BACK_PASSWORD}@172.19.0.120/cam/realmonitor?channel=1&subtype=0";
-    door = "rtsp://stream:\${DOOR_PASSWORD}@172.19.0.130/cam/realmonitor?channel=1&subtype=0";
-    side = "rtsp://stream:\${SIDE_PASSWORD}@172.19.0.140/cam/realmonitor?channel=1&subtype=0";
-    front_sub = "rtsp://stream:\${FRONT_PASSWORD}@172.19.0.110/cam/realmonitor?channel=1&subtype=2";
-    back_sub = "rtsp://stream:\${BACK_PASSWORD}@172.19.0.120/cam/realmonitor?channel=1&subtype=2";
-    door_sub = "rtsp://stream:\${DOOR_PASSWORD}@172.19.0.130/cam/realmonitor?channel=1&subtype=1";
-    side_sub = "rtsp://stream:\${SIDE_PASSWORD}@172.19.0.140/cam/realmonitor?channel=1&subtype=1";
-  };
-  systemd.services.go2rtc.serviceConfig.LoadCredential = [
-    "FRONT_PASSWORD:${config.sops.secrets."frigate/cameras/front/password".path}"
-    "BACK_PASSWORD:${config.sops.secrets."frigate/cameras/back/password".path}"
-    "DOOR_PASSWORD:${config.sops.secrets."frigate/cameras/door/password".path}"
-    "SIDE_PASSWORD:${config.sops.secrets."frigate/cameras/side/password".path}"
-  ];
-  sops.secrets."frigate/cameras/front/password".owner = "frigate";
-  sops.secrets."frigate/cameras/back/password".owner = "frigate";
-  sops.secrets."frigate/cameras/door/password".owner = "frigate";
-  sops.secrets."frigate/cameras/side/password".owner = "frigate";
+  services.go2rtc.settings.streams = concatMapAttrs (name: cam: {
+    ${name} = mkRtsp cam.ip name 0;
+    "${name}_sub" = mkRtsp cam.ip name cam.subSubtype;
+  }) cameras;
+  systemd.services.go2rtc.serviceConfig.LoadCredential = mapAttrsToList (
+    name: _: "${passwordEnv name}:${config.sops.secrets."frigate/cameras/${name}/password".path}"
+  ) cameras;
+  sops.secrets = mapAttrs' (
+    name: _: nameValuePair "frigate/cameras/${name}/password" { owner = "frigate"; }
+  ) cameras;
 
   services.nginx.virtualHosts."${config.services.frigate.hostname}" = {
     default = true;
