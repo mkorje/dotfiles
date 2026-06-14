@@ -13,7 +13,7 @@
       width = 2560;
       height = 1440;
       refreshRate = 144;
-      wallpaper = "${inputs.wallpapers}/wallhaven-3lrmm9_2560x1440.png";
+      wallpaper = ./wallhaven-3lrmm9_2560x1440.png;
     }
     {
       name = "DP-2";
@@ -21,7 +21,7 @@
       height = 1080;
       refreshRate = 144;
       x = -1920;
-      wallpaper = "${inputs.wallpapers}/wallhaven-3lrmm9_1920x1080.png";
+      wallpaper = ./wallhaven-3lrmm9_1920x1080.png;
     }
   ];
 }

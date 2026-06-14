@@ -326,8 +326,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "sops-nix": "sops-nix",
-        "treefmt-nix": "treefmt-nix",
-        "wallpapers": "wallpapers"
+        "treefmt-nix": "treefmt-nix"
       }
     },
     "rust-overlay": {
@@ -403,22 +402,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "wallpapers": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1742178846,
-        "narHash": "sha256-JNjiqIl5zr0hQLOXXPKdkiAoJzHUf63Z/DZs+ZxPt+E=",
-        "owner": "mkorje",
-        "repo": "wallpapers",
-        "rev": "9f1905eca652296ab0c6b7d5bbbe6ad7d170848e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mkorje",
-        "repo": "wallpapers",
         "type": "github"
       }
     }

@@ -41,11 +41,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    wallpapers = {
-      url = "github:mkorje/wallpapers";
-      flake = false;
-    };
-
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
