@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
     ./documents.nix
+    inputs.direnv-instant.homeModules.direnv-instant
   ];
 
   allowedUnfreePackages = [ "claude-code" ];
@@ -27,6 +28,7 @@
     rustfmt
   ];
 
+  programs.direnv-instant.enable = true;
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
