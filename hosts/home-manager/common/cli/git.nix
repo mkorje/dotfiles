@@ -18,22 +18,14 @@
       push.autoSetupRemote = true;
       log.date = "iso";
     };
-
-    # delta = {
-    #   enable = true;
-    # };
-    # diff-so-fancy = {
-    #   enable = true;
-    # };
-    # use `git diff --no-ext-diff` to do patches!
   };
 
+  # use `git diff --no-ext-diff` to do patches!
+  # try out delta & diff-so-fancy
   programs.difftastic = {
     enable = true;
     git.enable = true;
   };
-
-  programs.gitui.enable = false;
 
   programs.jujutsu = {
     enable = true;

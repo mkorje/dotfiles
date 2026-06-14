@@ -43,13 +43,6 @@ in
         ControlPersist = "no";
       };
 
-      # "comp30023" = {
-      #   User = "mkortge";
-      #   HostName = "172.26.133.239";
-      #   ProxyCommand = "uni-connect %h %p";
-      #   ControlPersist = "no";
-      # };
-
       "meness" = {
         User = "admin";
         HostName = "172.16.1.100";

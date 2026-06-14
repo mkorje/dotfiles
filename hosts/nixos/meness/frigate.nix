@@ -85,17 +85,6 @@ in
     };
   };
 
-  # sops.secrets."frigate/genai/gemini/apiKey".owner = "frigate";
-  # sops.templates."frigate/secrets.env" = {
-  #   owner = "frigate";
-  #   content = ''
-  #     FRIGATE_GENAI_API_KEY=${config.sops.placeholder."frigate/genai/gemini/apiKey"}
-  #   '';
-  # };
-  # services.frigate.checkConfig = false;
-  # systemd.services.frigate.serviceConfig.EnvironmentFile =
-  #   config.sops.templates."frigate/secrets.env".path;
-
   services.frigate.settings.genai = {
     enabled = true;
     provider = "ollama";

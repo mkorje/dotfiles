@@ -2,23 +2,14 @@
 
 {
   # file manager
-  programs = {
-    xplr.enable = true;
-    yazi = {
-      enable = true;
-      shellWrapperName = "yy";
-    };
-    joshuto.enable = true;
-    broot = {
-      enable = true;
-    };
+  # should try xplr, broot, joshuto
+  programs.yazi = {
+    enable = true;
+    shellWrapperName = "yy";
   };
 
   programs = {
-    # ls replacements
-    lsd = {
-      enable = false;
-    };
+    # ls replacements, lsd is the other alternative
     eza = {
       enable = true;
       git = true;
@@ -33,9 +24,6 @@
     # cat replacements
     bat = {
       enable = true;
-      config = {
-        #theme = cfg.theme;
-      };
       extraPackages = with pkgs.bat-extras; [
         (batgrep.overrideAttrs (_: {
           doCheck = false;
@@ -46,17 +34,12 @@
         batdiff
         prettybat
       ];
-      syntaxes = { };
-      themes = { };
     };
 
     ripgrep.enable = true;
 
     # find replacement
-    fd = {
-      enable = true;
-      hidden = false;
-    };
+    fd.enable = true;
 
     # command-line fuzzy finder
     fzf = {
@@ -66,7 +49,6 @@
     # process/system monitor
     bottom = {
       enable = true;
-      package = pkgs.bottom;
       settings = {
         flags = {
           avg_cpu = true;
