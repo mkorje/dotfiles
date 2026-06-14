@@ -132,6 +132,4 @@
   services.pcscd.enable = true;
 
   services.udisks2.enable = true;
-
-  services.orca.enable = true;
 }
