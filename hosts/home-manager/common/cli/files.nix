@@ -50,7 +50,14 @@
 
   programs = {
     yt-dlp.enable = true;
-    mpv.enable = true;
+    mpv = {
+      enable = true;
+      package = pkgs.mpv.override {
+        mpv-unwrapped = pkgs.mpv-unwrapped.override {
+          ffmpeg = pkgs.ffmpeg-full;
+        };
+      };
+    };
     imv.enable = true;
     gallery-dl = {
       enable = true;
