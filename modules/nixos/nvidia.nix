@@ -32,6 +32,7 @@ in
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia.open = true;
     hardware.nvidia.nvidiaSettings = !cfg.headless;
+    hardware.nvidia.powerManagement.enable = !cfg.headless;
 
     environment.sessionVariables = {
       NVD_BACKEND = "direct";
