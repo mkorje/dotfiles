@@ -14,7 +14,6 @@ let
     foldl'
     strings
     filesystem
-    generators
     ;
   cfg = config.desktop;
 
@@ -144,17 +143,6 @@ in
             monitor = x.name;
           }) primaryMonitors
         );
-        on = {
-          _args = [
-            "hyprland.start"
-            (generators.mkLuaInline ''
-              function()
-                hl.exec_cmd("uwsm-app -- mullvad-vpn", { workspace = "9 silent" })
-                hl.dispatch(hl.dsp.focus({ workspace = 1 }))
-              end
-            '')
-          ];
-        };
       };
 
       xdg.configFile = builtins.listToAttrs (

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 
 {
   imports = [
@@ -24,4 +24,16 @@
       wallpaper = ./wallhaven-3lrmm9_1920x1080.png;
     }
   ];
+
+  wayland.windowManager.hyprland.settings.on = {
+    _args = [
+      "hyprland.start"
+      (lib.generators.mkLuaInline ''
+        function()
+          hl.exec_cmd("uwsm-app -- mullvad-vpn", { workspace = "9 silent" })
+          hl.dispatch(hl.dsp.focus({ workspace = 1 }))
+        end
+      '')
+    ];
+  };
 }
