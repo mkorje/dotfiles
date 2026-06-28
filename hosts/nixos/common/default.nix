@@ -33,6 +33,7 @@
     pkgs.killall
     pkgs.rsync
     pkgs.tmux
+    pkgs.smartmontools
   ];
 
   services.timesyncd.enable = true;
