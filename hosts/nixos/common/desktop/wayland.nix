@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -9,6 +10,20 @@
     enable = true;
     withUWSM = true;
   };
+
+  # Only install the `hyprland-uwsm.desktop` session.
+  services.displayManager.sessionPackages = lib.mkForce [
+    (pkgs.runCommand "hyprland-uwsm-session"
+      {
+        passthru.providedSessions = [ "hyprland-uwsm" ];
+      }
+      ''
+        mkdir -p "$out/share/wayland-sessions"
+        cp ${config.programs.hyprland.package}/share/wayland-sessions/hyprland-uwsm.desktop \
+          "$out/share/wayland-sessions/"
+      ''
+    )
+  ];
 
   security.rtkit.enable = true;
   services.pipewire.jack.enable = true;
