@@ -31,11 +31,6 @@ in
         IdentityFile = gitIdentityFile;
       };
 
-      "swen20003.eng.unimelb.edu.au" = {
-        User = "git";
-        IdentityFile = gitIdentityFile;
-      };
-
       "spartan" = {
         User = "kortgem";
         HostName = "spartan.hpc.unimelb.edu.au";
@@ -49,9 +44,9 @@ in
         IdentityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
       };
 
-      "hermes" = {
+      "laima" = {
         User = "admin";
-        HostName = "139.84.200.35";
+        HostName = "5.223.68.149";
         IdentityFile = "~/.ssh/id_ed25519_sk_rk_nixos";
       };
 
