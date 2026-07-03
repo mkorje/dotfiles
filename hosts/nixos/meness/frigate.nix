@@ -57,10 +57,7 @@ in
   services.frigate.settings.ffmpeg = {
     hwaccel_args = "preset-nvidia";
     input_args = "preset-rtsp-restream-low-latency";
-    # This is `preset-record-generic-audio-copy` with `-copyinkf` added. May be
-    # due to https://trac.ffmpeg.org/ticket/11531, should be fixed in the next
-    # version (current version is 7.1.1).
-    output_args.record = "-f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c copy -copyinkf";
+    output_args.record = "preset-record-generic-audio-copy";
   };
 
   services.frigate.settings.ui = {
@@ -86,10 +83,12 @@ in
   };
 
   services.frigate.settings.genai = {
-    enabled = true;
     provider = "ollama";
     base_url = "http://localhost:11434";
     model = "gemma3:4b";
+  };
+  services.frigate.settings.objects.genai = {
+    enabled = true;
     object_prompts.person = "Examine the person in these images from the {camera} security camera of a house. What are they doing and what might their actions suggest about their intent (e.g., delivering something, approaching a door, leaving an area, standing still)? If they are carrying or interacting with a package, include details about its source or destination. Do not describe the surroundings or static details. Keep your response direct and brief. It should be at most a couple of sentences and you should not add any introduction or conclusion.";
   };
 
@@ -109,10 +108,8 @@ in
   services.frigate.settings.snapshots.enabled = true;
   services.frigate.settings.record = {
     enabled = true;
-    retain = {
-      days = 3;
-      mode = "motion";
-    };
+    continuous.days = 0;
+    motion.days = 3;
     alerts.retain.days = 10;
     detections.retain.days = 10;
   };
