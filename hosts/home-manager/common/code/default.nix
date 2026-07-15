@@ -6,7 +6,10 @@
     inputs.direnv-instant.homeModules.direnv-instant
   ];
 
-  allowedUnfreePackages = [ "claude-code" ];
+  allowedUnfreePackages = [
+    "claude-code"
+    "antigravity-cli"
+  ];
 
   home.packages = with pkgs; [
     (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
@@ -19,6 +22,7 @@
 
     (pkgs.llm-agents.claude-code.override { disableTelemetry = true; })
     pkgs.llm-agents.codex
+    pkgs.llm-agents.antigravity-cli
 
     watchexec
 
