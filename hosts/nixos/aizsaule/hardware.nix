@@ -38,7 +38,13 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  boot.initrd.luks.devices."nixos-enc".device = "/dev/disk/by-label/nixos-crypt";
+  boot.initrd.luks.devices."nixos-enc" = {
+    device = "/dev/disk/by-label/nixos-crypt";
+    allowDiscards = true;
+    bypassWorkqueues = true;
+  };
+
+  services.fstrim.enable = false;
 
   fileSystems = {
     "/" = {
@@ -72,7 +78,10 @@
     "/swap" = {
       device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
-      options = [ "subvol=swap" ];
+      options = [
+        "subvol=swap"
+        "noatime"
+      ];
     };
     "/home" = {
       device = "/dev/disk/by-label/nixos";
@@ -93,7 +102,12 @@
     };
   };
 
-  swapDevices = [ { device = "/swap/swapfile"; } ];
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 32768; # 32 GiB
+    }
+  ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
