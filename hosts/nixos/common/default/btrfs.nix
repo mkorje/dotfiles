@@ -12,7 +12,8 @@
     requires = [ "dev-disk-by\\x2dlabel-nixos.device" ];
     after = [
       "dev-disk-by\\x2dlabel-nixos.device"
-      "systemd-cryptsetup@enc.service"
+      "systemd-cryptsetup@nixos\\x2denc.service"
+      "local-fs-pre.target"
     ];
     before = [ "sysroot.mount" ];
     unitConfig.DefaultDependencies = "no";
