@@ -23,9 +23,19 @@
   boot.extraModulePackages = [ ];
 
   boot.initrd.luks.devices = {
-    "nixos-enc".device = "/dev/disk/by-label/nixos-crypt";
-    "data-enc".device = "/dev/disk/by-label/data-crypt";
+    "nixos-enc" = {
+      device = "/dev/disk/by-label/nixos-crypt";
+      allowDiscards = true;
+      bypassWorkqueues = true;
+    };
+    "data-enc" = {
+      device = "/dev/disk/by-label/data-crypt";
+      allowDiscards = true;
+      bypassWorkqueues = true;
+    };
   };
+
+  services.fstrim.enable = false;
 
   fileSystems = {
     "/" = {
@@ -59,7 +69,10 @@
     "/swap" = {
       device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
-      options = [ "subvol=swap" ];
+      options = [
+        "subvol=swap"
+        "noatime"
+      ];
     };
     "/home" = {
       device = "/dev/disk/by-label/nixos";
@@ -111,7 +124,12 @@
     "d /data/files 0700 mkorje mkorje"
   ];
 
-  swapDevices = [ { device = "/swap/swapfile"; } ];
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 65536; # 64 GiB
+    }
+  ];
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
