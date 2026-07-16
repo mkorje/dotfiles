@@ -23,11 +23,11 @@ IFS= read -r -s -p "Enter disk encryption password: " PASSWORD
 echo
 
 # Encrypt root partition.
-echo "$PASSWORD" | cryptsetup --batch-mode --hash sha512 --iter-time 10000 --label nixos-crypt luksFormat /dev/nvme0n1p2
+echo "$PASSWORD" | cryptsetup --batch-mode --hash sha512 --iter-time 10000 --sector-size 4096 --label nixos-crypt luksFormat /dev/nvme0n1p2
 echo "$PASSWORD" | cryptsetup --batch-mode open /dev/nvme0n1p2 nixos-enc
 
 # Encrypt second disk.
-echo "$PASSWORD" | cryptsetup --batch-mode --hash sha512 --iter-time 10000 --label data-crypt luksFormat /dev/nvme1n1p1
+echo "$PASSWORD" | cryptsetup --batch-mode --hash sha512 --iter-time 10000 --sector-size 4096 --label data-crypt luksFormat /dev/nvme1n1p1
 echo "$PASSWORD" | cryptsetup --batch-mode open /dev/nvme1n1p1 data-enc
 
 # Format and mount root partition.
