@@ -59,8 +59,6 @@
   # very nice music player
   services.amberol.enable = true;
 
-  allowedUnfreePackages = [ "discord" ];
-
   home.packages = with pkgs; [
     # fonts
     nerd-fonts.blex-mono
@@ -92,7 +90,5 @@
 
     # insecure
     # cinny-desktop
-
-    discord
   ];
 }

@@ -59,6 +59,11 @@
       inputs.flake-parts.follows = "flake-parts";
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
+
+    hytale-launcher = {
+      url = "github:JPyke3/hytale-launcher-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

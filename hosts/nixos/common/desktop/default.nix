@@ -8,6 +8,7 @@
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
+    ./gaming.nix
     ./network.nix
     ./wayland.nix
   ];
@@ -23,15 +24,10 @@
   nix.daemonIOSchedClass = "idle";
 
   allowedUnfreePackages = [
-    "steam"
-    "steam-original"
-    "steam-run"
-    "steam-unwrapped"
     "fxlinuxprint"
   ];
 
   environment.systemPackages = with pkgs; [
-    # dolphin-emu
     openrazer-daemon
     polychromatic
     pwvucontrol
@@ -39,8 +35,6 @@
   ];
 
   programs.kdeconnect.enable = true;
-
-  programs.steam.enable = true;
 
   sops.secrets = {
     "users/mkorje/hashedPassword" = {
