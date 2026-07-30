@@ -38,6 +38,12 @@ in
         ControlPersist = "no";
       };
 
+      "magma" = {
+        User = "mkorje";
+        HostName = "dirichlet";
+        IdentityFile = "~/.ssh/id_ed25519_sk_rk_magma";
+      };
+
       "meness" = {
         User = "admin";
         HostName = "172.16.1.100";
