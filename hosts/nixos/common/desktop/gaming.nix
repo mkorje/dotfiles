@@ -7,6 +7,7 @@
     "steam-run"
     "steam-unwrapped"
     "discord"
+    "discord-unwrapped"
   ];
 
   programs.steam = {
