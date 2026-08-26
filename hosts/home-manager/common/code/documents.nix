@@ -10,7 +10,7 @@
     hieroglyphic
 
     xournalpp
-    libreoffice-fresh
+    libreoffice-stable
     pkgs-stable.calibre
 
     kdePackages.okular
