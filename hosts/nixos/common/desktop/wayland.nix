@@ -30,6 +30,9 @@
 
   services.libinput.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false;
+
   services.greetd = {
     enable = true;
     useTextGreeter = true;
