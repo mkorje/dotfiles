@@ -32,6 +32,7 @@
     polychromatic
     pwvucontrol
     android-file-transfer
+    samba
   ];
 
   programs.kdeconnect.enable = true;
@@ -81,13 +82,25 @@
     drivers = with pkgs; [
       fxlinuxprint
     ];
-    clientConf = ''
-      User kortgem@unimelb.edu.au
-    '';
   };
+
+  environment.etc."samba/smb.conf".text = "";
 
   hardware.printers = {
     ensurePrinters = [
+      {
+        name = "UniPrint";
+        description = "UniPrint";
+        location = "University";
+        deviceUri = "smb://uniprint.unimelb.edu.au/UniPrint";
+        model = "fxlinuxprint.ppd.gz";
+        ppdOptions = {
+          PageSize = "A4";
+          Duplex = "DuplexNoTumble";
+          FXStaple = "UpperLeftSingle";
+          auth-info-required = "username,password";
+        };
+      }
       {
         name = "EPSON30478C";
         description = "EPSON ET-3800 Series";
@@ -99,16 +112,6 @@
           MediaType = "Stationery";
           cupsPrintQuality = "High";
           ColorModel = "RGB";
-          Duplex = "DuplexNoTumble";
-        };
-      }
-      {
-        # lp -d UniPrint main.pdf
-        name = "UniPrint";
-        description = "UniPrint";
-        deviceUri = "ipps://print.ipa.unimelb.edu.au:631/printers/UniPrint";
-        model = "raw";
-        ppdOptions = {
           Duplex = "DuplexNoTumble";
         };
       }
