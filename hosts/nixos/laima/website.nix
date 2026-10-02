@@ -11,6 +11,7 @@ let
   service = "website-mkor-je-deploy";
   rootDir = "/var/www";
   root = "${rootDir}/mkor.je";
+  siteConf = "${rootDir}/mkor.je.conf";
   secretEnvVar = "deploy-secret";
   triggerDir = "/run/${service}";
   trigger = "${triggerDir}/trigger";
@@ -54,10 +55,28 @@ in
       "[2a01:4ff:2f0:393b::1]"
     ];
 
-    inherit root;
+    extraConfig = ''
+      set $style_hash "";
+      include ${rootDir}/mkor.je.con[f];
+      add_header Strict-Transport-Security $hsts_header always;
+      add_header Content-Security-Policy "default-src 'none'; font-src https://mkor.je/fonts/; img-src https://mkor.je/favicon.png; style-src-elem '$style_hash'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; trusted-types 'none'; require-trusted-types-for 'script'" always;
+      add_header Permissions-Policy "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()" always;
+      add_header Referrer-Policy no-referrer;
+      add_header X-Frame-Options DENY always;
+      add_header X-Content-Type-Options nosniff always;
+      add_header Cross-Origin-Resource-Policy same-origin always;
+      add_header Cross-Origin-Embedder-Policy require-corp always;
+      add_header Cross-Origin-Opener-Policy same-origin always;
+    '';
 
     locations."/" = {
       tryFiles = "$uri $uri.html $uri/index.html =404";
+    };
+
+    locations."/fonts/" = {
+      extraConfig = ''
+        expires 1y;
+      '';
     };
 
     locations."/hooks/" = {
@@ -84,6 +103,8 @@ in
         pkgs.nix
         pkgs.git
         pkgs.coreutils
+        pkgs.gnused
+        pkgs.openssl
       ];
       serviceConfig = {
         Type = "oneshot";
@@ -97,11 +118,17 @@ in
           home
           rootDir
         ];
-        ExecStart = ''
-          ${pkgs.nix}/bin/nix \
-            --extra-experimental-features "nix-command flakes" \
-            build --refresh --out-link ${root} github:mkorje/me
+        ExecStart = pkgs.writeShellScript service ''
+          set -euo pipefail
+          out=$(nix --extra-experimental-features "nix-command flakes" \
+            build --refresh --print-out-paths --out-link ${root} github:mkorje/me)
+          hash=$(sed -zn 's|.*<style>\([^<]*\)</style>.*|\1|p' "$out/index.html" \
+            | openssl dgst -sha256 -binary | base64 -w0)
+          printf 'root %s;\nset $style_hash "sha256-%s";\n' "$out" "$hash" \
+            > ${siteConf}.new
+          mv ${siteConf}.new ${siteConf}
         '';
+        ExecStartPost = "+${config.systemd.package}/bin/systemctl reload nginx";
       };
     };
     paths.${service} = {
