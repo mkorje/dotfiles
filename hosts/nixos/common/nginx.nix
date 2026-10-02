@@ -10,10 +10,10 @@
     recommendedBrotliSettings = true;
     experimentalZstdSettings = true;
 
-    # https://ssl-config.mozilla.org/#server=nginx&config=modern&ocsp=false
+    # https://configurator.tlsref.org/#server=nginx&config=modern&hsts
     sslProtocols = "TLSv1.3";
     commonHttpConfig = ''
-      ssl_ecdh_curve X25519:prime256v1:secp384r1;
+      ssl_ecdh_curve X25519MLKEM768:X25519:prime256v1:secp384r1;
       ssl_prefer_server_ciphers off;
     '';
 
