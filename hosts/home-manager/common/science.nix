@@ -7,7 +7,7 @@
     # broken
     #kicad # PCB design, see kicadAddons.*
     #freecad # CAD
-    zotero
+    pkgs-stable.zotero
   ];
 
   # CAS
