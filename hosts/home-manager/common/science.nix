@@ -7,7 +7,15 @@
     # broken
     #kicad # PCB design, see kicadAddons.*
     #freecad # CAD
-    pkgs-stable.zotero
+    zotero
+  ];
+
+  # remove with zotero 11
+  allowedUnfreePackages = [
+    "firefox-esr-140-bin-unwrapped"
+  ];
+  allowedInsecurePackages = [
+    "firefox-esr-140-bin-unwrapped"
   ];
 
   # CAS
