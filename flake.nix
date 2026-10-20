@@ -88,6 +88,11 @@
 
       checks."x86_64-linux" = {
         formatting = treefmt.config.build.check self;
+        restore-root = pkgs.testers.runNixOSTest ./tests/restore-root.nix;
+        restore-root-boot = pkgs.testers.runNixOSTest (import ./tests/restore-root-boot.nix { });
+        restore-root-boot-luks = pkgs.testers.runNixOSTest (
+          import ./tests/restore-root-boot.nix { luks = true; }
+        );
       };
     };
 }
