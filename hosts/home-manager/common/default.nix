@@ -72,8 +72,10 @@
     #electrum-ltc
     qbittorrent
     signal-desktop
-    # bitwarden-desktop
-    bitwarden-cli
+
+    # proton-pass
+    proton-pass-cli
+
     rclone
     glow # markdown viewer
     pandoc
