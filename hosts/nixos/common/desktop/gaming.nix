@@ -3,8 +3,6 @@
 {
   allowedUnfreePackages = [
     "steam"
-    "steam-original"
-    "steam-run"
     "steam-unwrapped"
     "discord"
     "discord-unwrapped"
