@@ -7,7 +7,6 @@
     requires = [ "dev-disk-by\\x2dlabel-nixos.device" ];
     after = [
       "dev-disk-by\\x2dlabel-nixos.device"
-      "systemd-cryptsetup@nixos\\x2denc.service"
       "local-fs-pre.target"
     ];
     before = [ "sysroot.mount" ];
@@ -20,11 +19,15 @@
         mount -t btrfs -o subvol=/ /dev/disk/by-label/nixos "$MNTPOINT"
         trap 'umount "$MNTPOINT"' EXIT
 
-        echo "Cleaning root subvolume"
-        btrfs subvolume list -o "$MNTPOINT/root" | cut -f9 -d ' ' |
-        while read -r subvolume; do
-          btrfs subvolume delete "$MNTPOINT/$subvolume"
-        done && btrfs subvolume delete "$MNTPOINT/root"
+        btrfs subvolume show "$MNTPOINT/root-blank" >/dev/null
+
+        if [[ -L "$MNTPOINT/root" ]]; then
+          echo "root is a symlink, refusing to delete it" >&2
+          exit 1
+        elif [[ -e "$MNTPOINT/root" ]]; then
+          echo "Cleaning root subvolume"
+          btrfs subvolume delete --recursive "$MNTPOINT/root"
+        fi
 
         echo "Restoring blank subvolume"
         btrfs subvolume snapshot "$MNTPOINT/root-blank" "$MNTPOINT/root"
