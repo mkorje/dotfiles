@@ -1,28 +1,28 @@
+{ pkgs, ... }:
+
 {
   accounts.email = {
     accounts = {
       personal = {
-
+        realName = "Max Kortge";
+        thunderbird.enable = true;
+        primary = true;
+        flavor = "protonmail-bridge";
+        address = "max@mkor.je";
       };
       student = {
         realName = "Max Kortge";
         thunderbird.enable = true;
-        primary = true;
-        university = {
-          enable = true;
-          username = "mkortge";
-          aliases = [ "max.kortge" ];
-          subdomain = "student";
-        };
+        flavor = "unimelb";
+        address = "mkortge@student.unimelb.edu.au";
+        aliases = [ "max.kortge@student.unimelb.edu.au" ];
       };
       staff = {
         realName = "Max Kortge";
         thunderbird.enable = true;
-        university = {
-          enable = true;
-          username = "m.kortge";
-          aliases = [ "kortgem" ];
-        };
+        flavor = "unimelb";
+        address = "m.kortge@unimelb.edu.au";
+        aliases = [ "kortgem@unimelb.edu.au" ];
       };
     };
   };
@@ -124,5 +124,8 @@
     };
   };
 
-  services.protonmail-bridge.enable = true;
+  services.protonmail-bridge = {
+    enable = true;
+    extraPackages = [ pkgs.gnome-keyring ];
+  };
 }

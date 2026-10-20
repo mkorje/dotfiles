@@ -8,7 +8,8 @@
   imports = [
     # sops-nix.homeManagerModules.sops
     inputs.catppuccin.homeModules.catppuccin
-    inputs.self.homeModules.university
+    inputs.self.homeModules.protonmail-bridge
+    inputs.self.homeModules.unimelb
 
     ./cli
     ./code

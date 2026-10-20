@@ -1,4 +1,5 @@
 {
   monitors = import ./monitors.nix;
-  university = import ./university.nix;
+  protonmail-bridge = import ./protonmail-bridge.nix;
+  unimelb = import ./unimelb.nix;
 }
