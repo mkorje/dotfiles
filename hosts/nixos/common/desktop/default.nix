@@ -123,7 +123,6 @@
 
   services.udev.packages = [
     pkgs.yubikey-personalization
-    pkgs.sane-airscan
   ];
 
   services.pcscd.enable = true;

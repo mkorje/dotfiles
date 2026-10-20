@@ -1,11 +1,6 @@
-{ pkgs, ... }:
-
 {
-  environment.systemPackages = [ pkgs.btrfs-progs ];
-
   services.btrfs.autoScrub.enable = true;
 
-  boot.initrd.supportedFilesystems.btrfs = true;
   boot.initrd.systemd.services."restore-root" = {
     description = "Rollback btrfs rootfs";
     wantedBy = [ "initrd.target" ];

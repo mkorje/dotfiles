@@ -9,8 +9,6 @@ let
       stable ? false,
     }:
     (if stable then inputs.nixpkgs-stable else inputs.nixpkgs).lib.nixosSystem {
-      inherit system;
-
       specialArgs = {
         inherit inputs hostName domain;
       }

@@ -35,7 +35,6 @@
       enable = true;
       configurationLimit = 5;
     };
-    efi.efiSysMountPoint = "/boot";
     efi.canTouchEfiVariables = true;
   };
 }

@@ -1,7 +1,6 @@
 {
   services.openssh = {
     enable = true;
-    allowSFTP = true;
     settings.PermitRootLogin = "no";
     settings.PasswordAuthentication = false;
     settings.AllowUsers = [ "admin" ];

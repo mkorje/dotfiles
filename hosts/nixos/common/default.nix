@@ -45,17 +45,13 @@
   ];
 
   i18n.defaultLocale = "en_AU.UTF-8";
-  time = {
-    timeZone = "Australia/Melbourne";
-    hardwareClockInLocalTime = false;
-  };
+  time.timeZone = "Australia/Melbourne";
 
   networking.nftables.enable = true;
   networking.firewall.pingLimit = "2/second";
 
   systemd.network.enable = true;
   networking.useDHCP = false;
-  networking.dhcpcd.enable = false;
 
   services.resolved.enable = true;
   networking.nameservers = [
