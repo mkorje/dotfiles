@@ -57,15 +57,7 @@ in
     extraConfig = ''
       set $style_hash "";
       include ${rootDir}/mkor.je.con[f];
-      add_header Strict-Transport-Security $hsts_header always;
       add_header Content-Security-Policy "default-src 'none'; font-src https://mkor.je/fonts/; img-src https://mkor.je/favicon.png; style-src-elem '$style_hash'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; trusted-types 'none'; require-trusted-types-for 'script'" always;
-      add_header Permissions-Policy "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()" always;
-      add_header Referrer-Policy no-referrer;
-      add_header X-Frame-Options DENY always;
-      add_header X-Content-Type-Options nosniff always;
-      add_header Cross-Origin-Resource-Policy same-origin always;
-      add_header Cross-Origin-Embedder-Policy require-corp always;
-      add_header Cross-Origin-Opener-Policy same-origin always;
     '';
 
     locations."/" = {
