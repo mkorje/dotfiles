@@ -52,12 +52,8 @@
     ];
     languages = {
       language-server = {
-        harper-ls = {
-          command = "harper-ls";
-          args = [ "--stdio" ];
-          config.harper-ls = {
-            dialect = "Australian";
-          };
+        harper-ls.config.harper-ls = {
+          dialect = "Australian";
         };
         # tinymist.config = {
         #   projectResolution = "lockDatabase";
@@ -128,6 +124,17 @@
           name = "typst";
           auto-format = true;
           formatter.command = "typstyle";
+          language-servers = [
+            "tinymist"
+            "harper-ls"
+          ];
+        }
+        {
+          name = "latex";
+          language-servers = [
+            "texlab"
+            "harper-ls"
+          ];
         }
       ];
     };
