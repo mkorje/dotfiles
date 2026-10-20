@@ -9,7 +9,10 @@
     ./default/sops.nix
   ];
 
-  services.userborn.enable = true;
+  services.userborn = {
+    enable = true;
+    passwordFilesLocation = "/var/lib/nixos";
+  };
   users.mutableUsers = false;
   users.users."root".hashedPassword = "!";
 
