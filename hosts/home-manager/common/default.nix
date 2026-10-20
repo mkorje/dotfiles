@@ -40,8 +40,6 @@
     flavor = "mocha";
   };
 
-  fonts.fontconfig.enable = true;
-
   services.udiskie = {
     enable = true;
     settings = {
