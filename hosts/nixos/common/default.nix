@@ -16,10 +16,7 @@
   users.mutableUsers = false;
   users.users."root".hashedPassword = "!";
 
-  boot = {
-    initrd.systemd.enable = true;
-    loader.grub.enable = false;
-  };
+  boot.loader.grub.enable = false;
 
   system.etc.overlay.enable = true;
 
