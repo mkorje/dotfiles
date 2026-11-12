@@ -7,7 +7,6 @@
     ./files.nix
     ./sops.nix
     ./ssh.nix
-    ./tasks.nix
     ./yubikey.nix
   ];
 }
