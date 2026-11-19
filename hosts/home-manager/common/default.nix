@@ -73,6 +73,7 @@
 
     # proton-pass
     proton-pass-cli
+    proton-drive-cli
 
     rclone
     glow # markdown viewer
