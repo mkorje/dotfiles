@@ -13,11 +13,11 @@ set -e
 # Partition main disk.
 wipefs --all --force --quiet /dev/sda
 parted --script --align optimal /dev/sda \
-  mklabel gpt \
-  mkpart esp fat32 1MiB 513MiB \
-  set 1 esp on \
-  mkpart root btrfs 513MiB 100% \
-  type 2 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
+	mklabel gpt \
+	mkpart esp fat32 1MiB 513MiB \
+	set 1 esp on \
+	mkpart root btrfs 513MiB 100% \
+	type 2 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
 
 # Format and mount root partition.
 mkfs.btrfs --label nixos --force --quiet /dev/sda2

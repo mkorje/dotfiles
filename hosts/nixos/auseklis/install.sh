@@ -5,18 +5,18 @@
 # Partition main disk.
 wipefs --all --force --quiet /dev/nvme0n1
 parted --script --align optimal /dev/nvme0n1 \
-  mklabel gpt \
-  mkpart esp fat32 1MiB 4097MiB \
-  set 1 esp on \
-  mkpart root btrfs 4097MiB 100% \
-  type 2 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
+	mklabel gpt \
+	mkpart esp fat32 1MiB 4097MiB \
+	set 1 esp on \
+	mkpart root btrfs 4097MiB 100% \
+	type 2 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
 
 # Partition second disk.
 wipefs --all --force --quiet /dev/nvme1n1
 parted --script --align optimal /dev/nvme1n1 \
-  mklabel gpt \
-  mkpart root btrfs 0% 100% \
-  type 1 0FC63DAF-8483-4772-8E79-3D69D8477DE4
+	mklabel gpt \
+	mkpart root btrfs 0% 100% \
+	type 1 0FC63DAF-8483-4772-8E79-3D69D8477DE4
 
 # Prompt user for the encryption password.
 IFS= read -r -s -p "Enter disk encryption password: " PASSWORD

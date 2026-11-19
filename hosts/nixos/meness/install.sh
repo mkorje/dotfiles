@@ -14,11 +14,11 @@ set -e
 # Partition main disk.
 wipefs --all --force --quiet /dev/sda
 parted --script --align optimal /dev/sda \
-  mklabel gpt \
-  mkpart esp fat32 1MiB 1025MiB \
-  set 1 esp on \
-  mkpart root btrfs 1025MiB 100% \
-  type 2 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
+	mklabel gpt \
+	mkpart esp fat32 1MiB 1025MiB \
+	set 1 esp on \
+	mkpart root btrfs 1025MiB 100% \
+	type 2 4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
 
 # Encrypt root partition.
 echo '' | cryptsetup --batch-mode --hash sha512 --iter-time 10000 --label nixos-crypt luksFormat /dev/sda2
