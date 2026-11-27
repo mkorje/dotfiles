@@ -11,7 +11,7 @@
     };
 
     nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/pull/1934/head";
+      url = "github:NixOS/nixos-hardware";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
